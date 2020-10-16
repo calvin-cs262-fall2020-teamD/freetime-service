@@ -31,7 +31,6 @@ CREATE TABLE Group (
 	);
 
 CREATE TABLE GroupMembers (
-    ID integer PRIMARY KEY,
     memberID integer REFERENCES User(ID),
     groupID integer REFERENCES Group(ID)
     );
