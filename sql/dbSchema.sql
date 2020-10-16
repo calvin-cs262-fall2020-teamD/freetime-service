@@ -3,6 +3,13 @@
 -- @author(s) chv5
 --
 
+--Drop previous versions of the tables if they exist
+DROP TABLE IF EXISTS User;
+DROP TABLE IF EXISTS FreeTime;
+DROP TABLE IF EXISTS Group;
+DROP TABLE IF EXISTS GroupMembers;
+DROP TABLE IF EXISTS GroupEvent;
+
 CREATE TABLE User (
 	ID integer PRIMARY KEY,
     username varchar(10) NOT NULL,
@@ -33,3 +40,4 @@ CREATE TABLE GroupEvent (
 	eventTime timestamp
 	);
 
+--
