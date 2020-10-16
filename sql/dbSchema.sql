@@ -24,20 +24,23 @@ CREATE TABLE FreeTime (
 
 CREATE TABLE Group (
 	ID integer PRIMARY KEY, 
-	groupname varchar(15) NOT NULL	
+	groupname varchar(15) NOT NULL,
+    adminMemberID integer REFERENCES User(ID),
+	groupMembersID integer REFERENCES GroupMembers(ID),
+    groupEvents integer REFERENCES GroupEvent(ID)
 	);
 
 CREATE TABLE GroupMembers (
     ID integer PRIMARY KEY,
-    adminID integer REFERENCES FreeTime(ID),
-    memberID integer REFERENCES FreeTime(ID)
+    memberID integer REFERENCES User(ID),
+    groupID integer REFERENCES Group(ID)
     );
 
 CREATE TABLE GroupEvent (
 	groupID integer REFERENCES Group(ID),
-    participants integer,
+    participants integer REFERENCES FreeTime(ID),
     date DATE, 
 	eventTime timestamp
 	);
 
---
+
