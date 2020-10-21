@@ -18,6 +18,11 @@ CREATE TABLE User (
     groupAdminID integer REFERENCES Group(ID)
     );
 
+CREATE TABLE Interest(
+    ID integer PRIMARY KEY,
+    interestName varchar(20) NOT NULL
+)
+
 CREATE TABLE UserFriendsList(
     flID integer NOT NULL,
     friendID integer NOT NULL,
@@ -26,7 +31,7 @@ CREATE TABLE UserFriendsList(
 
 CREATE TABLE UserInterests(
     userID integer REFERENCES User(ID),
-    interest varchar(20) NOT NULL
+    interestID integer REFERENCES Interest(ID)
     );
 
 CREATE TABLE FreeTime (
