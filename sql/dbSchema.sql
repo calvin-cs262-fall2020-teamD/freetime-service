@@ -13,8 +13,21 @@ DROP TABLE IF EXISTS GroupEvent;
 CREATE TABLE User (
 	ID integer PRIMARY KEY,
     username varchar(10) NOT NULL,
-    freetimeID integer REFERENCES FreeTime(ID)
-	);
+    freetimeID integer REFERENCES FreeTime(ID),
+	friendListID integer REFERENCES UserFriendsList(flID),
+    groupAdminID integer REFERENCES Group(ID)
+    );
+
+CREATE TABLE UserFriendsList(
+    flID integer NOT NULL,
+    friendID integer NOT NULL,
+    FOREIGN KEY (friendID) REFERENCES User(ID)
+    );
+
+CREATE TABLE UserInterests(
+    userID integer REFERENCES User(ID),
+    interest varchar(20) NOT NULL
+    );
 
 CREATE TABLE FreeTime (
     ID integer PRIMARY KEY,
@@ -43,3 +56,7 @@ CREATE TABLE GroupEvent (
 	);
 
 
+GRANT SELECT ON User TO PUBLIC;
+GRANT SELECT ON UserFriendsList TO PUBLIC;
+GRANT SELECT ON UserInterests TO PUBLIC;
+GRANT SELECT ON UserFree TO PUBLIC;
