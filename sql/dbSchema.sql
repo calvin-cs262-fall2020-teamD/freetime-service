@@ -55,7 +55,7 @@ CREATE TABLE GroupMembers (
 
 CREATE TABLE GroupEvent (
 	groupID integer REFERENCES Group(ID),
-    participants integer REFERENCES FreeTime(ID),
+    participants integer REFERENCES GroupMembers(ID),
     date DATE, 
 	eventTime timestamp
 	);
