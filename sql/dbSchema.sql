@@ -5,6 +5,9 @@
 
 --Drop previous versions of the tables if they exist
 DROP TABLE IF EXISTS User;
+DROP TABLE IF EXISTS Interest;
+DROP TABLE IF EXISTS UserFriendsList;
+DROP TABLE IF EXISTS UserInterests;
 DROP TABLE IF EXISTS FreeTime;
 DROP TABLE IF EXISTS Group;
 DROP TABLE IF EXISTS GroupMembers;
@@ -21,7 +24,7 @@ CREATE TABLE User (
 CREATE TABLE Interest(
     ID integer PRIMARY KEY,
     interestName varchar(20) NOT NULL
-)
+);
 
 CREATE TABLE UserFriendsList(
     flID integer NOT NULL,
