@@ -1,6 +1,6 @@
---User(ID, username, freetimeID, groupAdminID)
-INSERT INTO User VALUES (1, 'Bill', 1, NULL);
-INSERT INTO User VALUES (2, 'Dill', 2, 1);
+--User(ID, username, password, freetimeID, groupAdminID)
+INSERT INTO User VALUES (1, 'Bill', 'Baconstripsandbaconstrips',1, NULL);
+INSERT INTO User VALUES (2, 'Dill', 'Lionsandtigersandbears', 2, 1);
 
 --FreeTime(userID, startTime, endTime, date)
 INSERT INTO FreeTime(1, 18:00, 19:00, 10/22/2020);
