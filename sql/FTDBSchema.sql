@@ -16,8 +16,8 @@ DROP TABLE IF EXISTS GroupEvent;
 CREATE TABLE User (
 	ID integer PRIMARY KEY,
     username varchar(10) NOT NULL,
+    usrPassword varchar(64)NOT NULL,
     freetimeID integer REFERENCES FreeTime(ID),
-	friendListID integer REFERENCES UserFriendsList(flID),
     groupAdminID integer REFERENCES Group(ID)
     );
 
@@ -27,7 +27,7 @@ CREATE TABLE Interest(
 );
 
 CREATE TABLE UserFriendsList(
-    flID integer NOT NULL,
+    userID integer REFERENCES user(ID)
     friendID integer NOT NULL,
     FOREIGN KEY (friendID) REFERENCES User(ID)
     );
@@ -38,17 +38,16 @@ CREATE TABLE UserInterests(
     );
 
 CREATE TABLE FreeTime (
-    ID integer PRIMARY KEY,
-    time freetime,
+    userID integer REFERENCES User(ID),
+    startTime time,
+    endTime time,
     date DATE
     );
 
 CREATE TABLE Group (
 	ID integer PRIMARY KEY, 
-	groupname varchar(15) NOT NULL,
-    adminMemberID integer REFERENCES User(ID),
-	groupMembersID integer REFERENCES GroupMembers(ID),
-    groupEvents integer REFERENCES GroupEvent(ID)
+	groupName varchar(15) NOT NULL,
+    adminID integer REFERENCES User(ID),
 	);
 
 CREATE TABLE GroupMembers (
@@ -58,10 +57,15 @@ CREATE TABLE GroupMembers (
 
 CREATE TABLE GroupEvent (
 	groupID integer REFERENCES Group(ID),
-    participants integer REFERENCES GroupMembers(ID),
-    date DATE, 
-	eventTime timestamp
+    eventIT integer REFERENCES FTEvent(ID),
 	);
+
+CREATE TABLE FTEvent (
+    ID integer PRIMARY KEY,
+    eventName varchar(15) NOT NULL,
+    eventTime time,
+    eventDate date 
+    );
 
 
 GRANT SELECT ON User TO PUBLIC;
