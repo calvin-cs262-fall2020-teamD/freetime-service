@@ -16,6 +16,7 @@ DROP TABLE IF EXISTS GroupEvent;
 CREATE TABLE User (
 	ID integer PRIMARY KEY,
     username varchar(10) NOT NULL,
+    password binary(64)NOT NULL,
     freetimeID integer REFERENCES FreeTime(ID),
     groupAdminID integer REFERENCES Group(ID)
     );
