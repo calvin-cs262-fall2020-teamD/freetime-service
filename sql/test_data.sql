@@ -1,20 +1,20 @@
---User(ID, username, password, freetimeID, groupAdminID)
-INSERT INTO User VALUES (1, 'Bill', 'Baconstripsandbaconstrips',1, NULL);
-INSERT INTO User VALUES (2, 'Dill', 'Lionsandtigersandbears', 2, 1);
-INSERT INTO User VALUES (3, 'Jill', 'abc123', NULL, NULL);
-INSERT INTO User VALUES (4, 'Gill', 'turducken5', NULL, NULL);
+--FTUser(ID, username, password)
+INSERT INTO FTUser VALUES (1, 'Bill', 'Baconstripsandbaconstrips');
+INSERT INTO FTUser VALUES (2, 'Dill', 'Lionsandtigersandbears');
+INSERT INTO FTUser VALUES (3, 'Jill', 'abc123');
+INSERT INTO FTUser VALUES (4, 'Gill', 'turducken5');
 
-INSERT INTO User VALUES (5, 'Owen', 'fancyPants', NULL, 2);
-INSERT INTO User VALUES (6, 'Josh', 'bearDown5!!', NULL, NULL);
-INSERT INTO User VALUES (7, 'Donald', 'quacker5?', NULL, NULL);
-INSERT INTO User VALUES (8, 'Michelange', 'fanta5ia', NULL, NULL);
+INSERT INTO FTUser VALUES (5, 'Owen', 'fancyPants');
+INSERT INTO FTUser VALUES (6, 'Josh', 'bearDown5!!');
+INSERT INTO FTUser VALUES (7, 'Donald', 'quacker5?');
+INSERT INTO FTUser VALUES (8, 'Michelange', 'fanta5ia');
 
 --FreeTime(userID, startTime, endTime, date)
 --Bill's free time
-INSERT INTO FreeTime(1, 18:00, 19:00, 10/22/2020);
+INSERT INTO FreeTime(1, '18:00:00', '19:00:00', 10/22/2020);
 --Dill's free time - bigger than Bill's
-INSERT INTO FreeTime(2, 17:00, 19:00, 10/22/2020);
-INSERT INTO FreeTime(2, 04:30, 06:00, 10/22/2020);
+INSERT INTO FreeTime(2, '17:00:00', '19:00:00', 10/22/2020);
+INSERT INTO FreeTime(2, '04:30:00', '06:00:00, 10/22/2020);
 --Jill's free time - same length as Dill's but offset by an hour
 INSERT INTO FreeTime(3, 18:00, 20:00, 10/22/2020);
 --Gill's free time - offset by half hour
@@ -86,8 +86,8 @@ INSERT INTO UserInterests VALUES (4, 2);
 INSERT INTO UserInterests VALUES (4, 7);
 
 --Group(ID, groupName, adminID)
-INSERT INTO Group VALUES (1, "5th VanderLagerstein", 2);
-INSERT INTO Group VALUES (2, "3rd Smith", 5);
+INSERT INTO Groups VALUES (1, "5th VanderLagerstein", 2);
+INSERT INTO Groups VALUES (2, "3rd Smith", 5);
 
 --GroupMembers(groupID, memberID)
 INSERT INTO GroupMembers VALUES (1, 1);

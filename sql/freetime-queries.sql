@@ -16,20 +16,20 @@ FROM User
 
 -- Get all times for a user
 SELECT *
-FROM User, FreeTime
+FROM FTUser, FreeTime
 WHERE ID = userID
 ;
 
 -- Get the groups a user is in
 SELECT *
-FROM User, Groups, GroupMembers
-WHERE User.ID = memberID
+FROM FTUser, Groups, GroupMembers
+WHERE FTUser.ID = memberID
 AND Groups.ID = groupID
 ;
 
 -- Get a user's friends
 SELECT friendID
-FROM User U1, UserFriendsList, User U2
+FROM FTUser U1, UserFriendsList, User U2
 WHERE U1.ID = userID
 AND U2.ID = friendID
 ;
