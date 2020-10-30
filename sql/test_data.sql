@@ -11,54 +11,54 @@ INSERT INTO FTUser VALUES (8, 'Michelange', 'fanta5ia');
 
 --FreeTime(userID, startTime, endTime, date)
 --Bill's free time
-INSERT INTO FreeTime(1, '18:00:00', '19:00:00', 10/22/2020);
+INSERT INTO FreeTime VALUES (1, '18:00:00', '19:00:00', '2020-10-22');
 --Dill's free time - bigger than Bill's
-INSERT INTO FreeTime(2, '17:00:00', '19:00:00', 10/22/2020);
-INSERT INTO FreeTime(2, '04:30:00', '06:00:00, 10/22/2020);
+INSERT INTO FreeTime VALUES (2, '17:00:00', '19:00:00', '2020-10-22');
+INSERT INTO FreeTime VALUES (2, '04:30:00', '06:00:00', '2020-10-22');
 --Jill's free time - same length as Dill's but offset by an hour
-INSERT INTO FreeTime(3, 18:00, 20:00, 10/22/2020);
+INSERT INTO FreeTime VALUES (3, '18:00:00', '20:00:00', '2020-10-22');
 --Gill's free time - offset by half hour
-INSERT INTO FreeTime(4, 17:30, 20:30, 10/22/2020);
+INSERT INTO FreeTime VALUES (4, '17:30:00', '20:30:00', '2020-10-22');
 
 --FreeTime(userID, startTime, endTime, date)
 --Bill's free time
-INSERT INTO FreeTime(5, 18:00, 19:00, 10/22/2020);
+INSERT INTO FreeTime VALUES (5, '18:00:00', '19:00:00', '2020-10-22');
 --Dill's free time - bigger than Bill's
-INSERT INTO FreeTime(6, 17:00, 19:00, 10/22/2020);
-INSERT INTO FreeTime(6, 04:30, 06:00, 10/22/2020);
+INSERT INTO FreeTime VALUES (6, '17:00:00', '19:00:00', '2020-10-22');
+INSERT INTO FreeTime VALUES (6, '04:30:00', '06:00:00', '2020-10-22');
 --Jill's free time - same length as Dill's but offset by an hour
-INSERT INTO FreeTime(7, 18:00, 20:00, 10/22/2020);
+INSERT INTO FreeTime VALUES (7, '18:00:00', '20:00:00', '2020-10-22');
 --Gill's free time - offset by half hour
-INSERT INTO FreeTime(8, 17:30, 20:30, 10/22/2020);
+INSERT INTO FreeTime VALUES (8, '17:30:00', '20:30:00', '2020-10-22');
 
 
 --UserFriendList(userID, friendID)
 --Everyone in group 1 is friends with each other
-INSERT INTO UserFriendList(1, 2);
-INSERT INTO UserFriendList(1, 3);
-INSERT INTO UserFriendList(1, 4);
-INSERT INTO UserFriendList(2, 1);
-INSERT INTO UserFriendList(2, 3);
-INSERT INTO UserFriendList(2, 4);
-INSERT INTO UserFriendList(3, 2);
-INSERT INTO UserFriendList(3, 1);
-INSERT INTO UserFriendList(3, 4);
-INSERT INTO UserFriendList(4, 2);
-INSERT INTO UserFriendList(4, 3);
-INSERT INTO UserFriendList(4, 1);
+INSERT INTO UserFriendList VALUES (1, 2);
+INSERT INTO UserFriendList VALUES (1, 3);
+INSERT INTO UserFriendList VALUES (1, 4);
+INSERT INTO UserFriendList VALUES (2, 1);
+INSERT INTO UserFriendList VALUES (2, 3);
+INSERT INTO UserFriendList VALUES (2, 4);
+INSERT INTO UserFriendList VALUES (3, 2);
+INSERT INTO UserFriendList VALUES (3, 1);
+INSERT INTO UserFriendList VALUES (3, 4);
+INSERT INTO UserFriendList VALUES (4, 2);
+INSERT INTO UserFriendList VALUES (4, 3);
+INSERT INTO UserFriendList VALUES (4, 1);
 --Everyone in group 2 is friends with each other
-INSERT INTO UserFriendList(5, 6);
-INSERT INTO UserFriendList(5, 7);
-INSERT INTO UserFriendList(5, 8);
-INSERT INTO UserFriendList(6, 5);
-INSERT INTO UserFriendList(6, 7);
-INSERT INTO UserFriendList(6, 8);
-INSERT INTO UserFriendList(7, 6);
-INSERT INTO UserFriendList(7, 8);
-INSERT INTO UserFriendList(7, 5);
-INSERT INTO UserFriendList(8, 7);
-INSERT INTO UserFriendList(8, 6);
-INSERT INTO UserFriendList(8, 5);
+INSERT INTO UserFriendList VALUES (5, 6);
+INSERT INTO UserFriendList VALUES (5, 7);
+INSERT INTO UserFriendList VALUES (5, 8);
+INSERT INTO UserFriendList VALUES (6, 5);
+INSERT INTO UserFriendList VALUES (6, 7);
+INSERT INTO UserFriendList VALUES (6, 8);
+INSERT INTO UserFriendList VALUES (7, 6);
+INSERT INTO UserFriendList VALUES (7, 8);
+INSERT INTO UserFriendList VALUES (7, 5);
+INSERT INTO UserFriendList VALUES (8, 7);
+INSERT INTO UserFriendList VALUES (8, 6);
+INSERT INTO UserFriendList VALUES (8, 5);
 
 --Interest(ID, interestName)
 INSERT INTO Interest VALUES (1, "Basketball");
@@ -91,14 +91,14 @@ INSERT INTO Groups VALUES (2, "3rd Smith", 5);
 
 --GroupMembers(groupID, memberID)
 INSERT INTO GroupMembers VALUES (1, 1);
-INSERT INTO GroupMembers VALUES (1, 2);
-INSERT INTO GroupMembers VALUES (1, 3);
-INSERT INTO GroupMembers VALUES (1, 4);
+INSERT INTO GroupMembers VALUES (2, 1);
+INSERT INTO GroupMembers VALUES (3, 1);
+INSERT INTO GroupMembers VALUES (4, 1);
 
-INSERT INTO GroupMembers VALUES (2, 5);
-INSERT INTO GroupMembers VALUES (2, 6);
-INSERT INTO GroupMembers VALUES (2, 7);
-INSERT INTO GroupMembers VALUES (2, 8);
+INSERT INTO GroupMembers VALUES (5, 2);
+INSERT INTO GroupMembers VALUES (6, 2);
+INSERT INTO GroupMembers VALUES (7, 2);
+INSERT INTO GroupMembers VALUES (8, 2);
 
---FTEvent(ID, groupID, eventName, startTime, endTime, date)
-INSERT INTO GroupEvent VALUES(1, 1, "Smash Tournament", 18:00, 20:00, 10/22/2020);
+--GroupEvent(ID, groupID, eventName, startTime, endTime, date)
+INSERT INTO GroupEvent VALUES (1, 1,    "Smash Tournament", '18:00:00', '20:00:00', '2020-10-22');

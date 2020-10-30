@@ -15,7 +15,7 @@ FROM FTUser
 ;
 
 -- Get all times for a user
-SELECT *
+SELECT username, startTime, endTime, date
 FROM FTUser, FreeTime
 WHERE ID = userID
 ;
@@ -29,7 +29,7 @@ AND Groups.ID = groupID
 
 -- Get a user's friends
 SELECT friendID
-FROM FTUser U1, UserFriendsList, User U2
+FROM FTUser U1, UserFriendsList, FTUser U2
 WHERE U1.ID = userID
 AND U2.ID = friendID
 ;
