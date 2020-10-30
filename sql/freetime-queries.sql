@@ -6,12 +6,12 @@
 
 -- Get a list of all the users
 SELECT *
-FROM User
+FROM FTUser
 ;
 
 -- Get a user password
 SELECT userPassword
-FROM User
+FROM FTUser
 ;
 
 -- Get all times for a user
