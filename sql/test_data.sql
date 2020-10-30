@@ -100,9 +100,5 @@ INSERT INTO GroupMembers VALUES (2, 6);
 INSERT INTO GroupMembers VALUES (2, 7);
 INSERT INTO GroupMembers VALUES (2, 8);
 
---FTEvent(ID, eventName, time, date)
-INSERT INTO FTEvent VALUES(1, "Smash Tournament", 18:00, 10/22/2020);
-
---GroupEvent(groupID, eventID)
-INSERT INTO GroupEvent(1, 1);
-INSERT INTO GroupEvent(2, 1);
+--FTEvent(ID, groupID, eventName, startTime, endTime, date)
+INSERT INTO GroupEvent VALUES(1, 1, "Smash Tournament", 18:00, 20:00, 10/22/2020);
