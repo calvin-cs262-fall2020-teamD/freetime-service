@@ -12,7 +12,7 @@
 
 const pgp = require('pg-promise')();
 const db = pgp({
-    host: "raja.db.elephantsql.com",
+    host: "lallah.db.elephantsql.com",
     port: 5432,
     database: process.env.USER,
     user: process.env.USER,
@@ -27,20 +27,14 @@ const port = process.env.PORT || 3000;
 const router = express.Router();
 router.use(express.json());
 
-router.get("/", readHelloMessage);
-router.get("/players", readPlayers);
-router.get("/players/:id", readPlayer);
-router.put("/players/:id", updatePlayer);
-router.post('/players', createPlayer);
-router.delete('/players/:id', deletePlayer);
-router.get("/playergames", getGames);
+
 
 app.use(router);
 app.use(errorHandler);
 app.listen(port, () => console.log(`Listening on port ${port}`));
 
 // Implement the CRUD operations.
-
+/*
 function errorHandler(err, req, res) {
     if (app.get('env') === "development") {
         console.log(err);
@@ -122,3 +116,4 @@ function getGames(req, res, next) {
     })
 }
 
+**/
