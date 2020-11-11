@@ -44,7 +44,7 @@ CREATE TABLE FreeTime (
 
 CREATE TABLE Groups (
 	ID integer PRIMARY KEY, 
-	groupName varchar(15) NOT NULL,
+	groupName varchar(20) NOT NULL,
     adminID integer REFERENCES FTUser(ID)
 	);
 

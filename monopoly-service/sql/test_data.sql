@@ -61,13 +61,13 @@ INSERT INTO UserFriendsList VALUES (8, 6);
 INSERT INTO UserFriendsList VALUES (8, 5);
 
 --Interest(ID, interestName)
-INSERT INTO Interest VALUES (1, "Basketball");
-INSERT INTO Interest VALUES (2, "Ultimate Frisbee");
-INSERT INTO Interest VALUES (3, "Gaming");
-INSERT INTO Interest VALUES (4, "Movies");
-INSERT INTO Interest VALUES (5, "Concerts");
-INSERT INTO Interest VALUES (6, "Volleyball");
-INSERT INTO Interest VALUES (7, "Backpacking");
+INSERT INTO Interest VALUES (1, 'Basketball');
+INSERT INTO Interest VALUES (2, 'Ultimate Frisbee');
+INSERT INTO Interest VALUES (3, 'Gaming');
+INSERT INTO Interest VALUES (4, 'Movies');
+INSERT INTO Interest VALUES (5, 'Concerts');
+INSERT INTO Interest VALUES (6, 'Volleyball');
+INSERT INTO Interest VALUES (7, 'Backpacking');
 
 --UserInterests(userID, interestID)
 --Bill's interests
@@ -86,8 +86,8 @@ INSERT INTO UserInterests VALUES (4, 2);
 INSERT INTO UserInterests VALUES (4, 7);
 
 --Group(ID, groupName, adminID)
-INSERT INTO Groups VALUES (1, "5th VanderLagerstein", 2);
-INSERT INTO Groups VALUES (2, "3rd Smith", 5);
+INSERT INTO Groups VALUES (1, '5th VanderLagerstein', 2);
+INSERT INTO Groups VALUES (2, '3rd Smith', 5);
 
 --GroupMembers(groupID, memberID)
 INSERT INTO GroupMembers VALUES (1, 1);
@@ -101,4 +101,4 @@ INSERT INTO GroupMembers VALUES (7, 2);
 INSERT INTO GroupMembers VALUES (8, 2);
 
 --GroupEvent(ID, groupID, eventName, startTime, endTime, date)
-INSERT INTO GroupEvent VALUES (1, 1,    "Smash Tournament", '18:00:00', '20:00:00', '2020-10-22');
+INSERT INTO GroupEvent VALUES (1, 1,    'Smash Tournament', '18:00:00', '20:00:00', '2020-10-22');
