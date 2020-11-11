@@ -1,16 +1,16 @@
 {
-  "name": "cs262-webservice",
+  "name": "freetime-webservice",
   "version": "1.0.0",
-  "description": "CS 262 Webservice",
-  "main": "monopolyService.js",
-  "author": "kvlinden",
+  "description": "Freetime Webservice",
+  "main": "freetimeService.js",
+  "author": "chv5",
   "license": "ISC",
   "engines": {
     "node": "12.x"
   },
   "scripts": {
-    "start": "node monopolyService.js",
-    "start-direct": "node monopolyDirect.js"
+    "start": "node freetimeService.js",
+    "start-direct": "node freetimeDirect.js"
   },
   "dependencies": {
     "express": "^4.17.1",

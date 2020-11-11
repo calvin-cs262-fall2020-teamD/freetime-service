@@ -1,2 +1,2 @@
-web: node monopolyService.js
-direct: node monopolyDirect.js
+web: node freetimeService.js
+direct: node freetimeDirect.js
