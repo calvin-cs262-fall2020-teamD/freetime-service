@@ -1,11 +1,11 @@
 /**
- * This module implements a REST-inspired webservice for the Monopoly DB.
+ * This module implements a REST-inspired webservice for the Freetime DB.
  * The database is hosted on ElephantSQL.
  *
  * Currently, the service supports the player table only.
  *
- * @author: kvlinden
- * @date: Summer, 2020
+ * @author: chv5
+ * @date: Fall, 2020
  */
 
 // Set up the database connection.
@@ -57,7 +57,7 @@ function returnDataOr404(res, data) {
 }
 
 function readHelloMessage(req, res) {
-    res.send('Hello, CS 262 Monopoly service!');
+    res.send('Hello, CS 262 Freetime service!');
 }
 
 function readPlayers(req, res, next) {
