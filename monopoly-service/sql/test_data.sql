@@ -32,33 +32,33 @@ INSERT INTO FreeTime VALUES (7, '18:00:00', '20:00:00', '2020-10-22');
 INSERT INTO FreeTime VALUES (8, '17:30:00', '20:30:00', '2020-10-22');
 
 
---UserFriendList(userID, friendID)
+--UserFriendsList(userID, friendID)
 --Everyone in group 1 is friends with each other
-INSERT INTO UserFriendList VALUES (1, 2);
-INSERT INTO UserFriendList VALUES (1, 3);
-INSERT INTO UserFriendList VALUES (1, 4);
-INSERT INTO UserFriendList VALUES (2, 1);
-INSERT INTO UserFriendList VALUES (2, 3);
-INSERT INTO UserFriendList VALUES (2, 4);
-INSERT INTO UserFriendList VALUES (3, 2);
-INSERT INTO UserFriendList VALUES (3, 1);
-INSERT INTO UserFriendList VALUES (3, 4);
-INSERT INTO UserFriendList VALUES (4, 2);
-INSERT INTO UserFriendList VALUES (4, 3);
-INSERT INTO UserFriendList VALUES (4, 1);
+INSERT INTO UserFriendsList VALUES (1, 2);
+INSERT INTO UserFriendsList VALUES (1, 3);
+INSERT INTO UserFriendsList VALUES (1, 4);
+INSERT INTO UserFriendsList VALUES (2, 1);
+INSERT INTO UserFriendsList VALUES (2, 3);
+INSERT INTO UserFriendsList VALUES (2, 4);
+INSERT INTO UserFriendsList VALUES (3, 2);
+INSERT INTO UserFriendsList VALUES (3, 1);
+INSERT INTO UserFriendsList VALUES (3, 4);
+INSERT INTO UserFriendsList VALUES (4, 2);
+INSERT INTO UserFriendsList VALUES (4, 3);
+INSERT INTO UserFriendsList VALUES (4, 1);
 --Everyone in group 2 is friends with each other
-INSERT INTO UserFriendList VALUES (5, 6);
-INSERT INTO UserFriendList VALUES (5, 7);
-INSERT INTO UserFriendList VALUES (5, 8);
-INSERT INTO UserFriendList VALUES (6, 5);
-INSERT INTO UserFriendList VALUES (6, 7);
-INSERT INTO UserFriendList VALUES (6, 8);
-INSERT INTO UserFriendList VALUES (7, 6);
-INSERT INTO UserFriendList VALUES (7, 8);
-INSERT INTO UserFriendList VALUES (7, 5);
-INSERT INTO UserFriendList VALUES (8, 7);
-INSERT INTO UserFriendList VALUES (8, 6);
-INSERT INTO UserFriendList VALUES (8, 5);
+INSERT INTO UserFriendsList VALUES (5, 6);
+INSERT INTO UserFriendsList VALUES (5, 7);
+INSERT INTO UserFriendsList VALUES (5, 8);
+INSERT INTO UserFriendsList VALUES (6, 5);
+INSERT INTO UserFriendsList VALUES (6, 7);
+INSERT INTO UserFriendsList VALUES (6, 8);
+INSERT INTO UserFriendsList VALUES (7, 6);
+INSERT INTO UserFriendsList VALUES (7, 8);
+INSERT INTO UserFriendsList VALUES (7, 5);
+INSERT INTO UserFriendsList VALUES (8, 7);
+INSERT INTO UserFriendsList VALUES (8, 6);
+INSERT INTO UserFriendsList VALUES (8, 5);
 
 --Interest(ID, interestName)
 INSERT INTO Interest VALUES (1, "Basketball");
