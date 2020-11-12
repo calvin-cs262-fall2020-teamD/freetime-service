@@ -6,7 +6,7 @@
   "author": "chv5",
   "license": "ISC",
   "engines": {
-    "node": "12.x"
+    "node": "10.x"
   },
   "scripts": {
     "start": "node freetimeService.js",
