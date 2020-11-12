@@ -34,7 +34,7 @@ app.use(errorHandler);
 app.listen(port, () => console.log(`Listening on port ${port}`));
 
 // Implement the CRUD operations.
-/*
+
 function errorHandler(err, req, res) {
     if (app.get('env') === "development") {
         console.log(err);
@@ -53,7 +53,7 @@ function returnDataOr404(res, data) {
 function readHelloMessage(req, res) {
     res.send('Hello, CS 262 Freetime service!');
 }
-
+/*
 function readPlayers(req, res, next) {
     db.many("SELECT * FROM Player")
         .then(data => {
