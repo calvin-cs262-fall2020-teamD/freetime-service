@@ -14,7 +14,7 @@
 // Set up the database connection.
 const pgp = require('pg-promise')();
 const db = pgp({
-    host: "raja.db.elephantsql.com",
+    host: "lallah.db.elephantsql.com",
     port: 5432,
     database: process.env.USER,
     user: process.env.USER,

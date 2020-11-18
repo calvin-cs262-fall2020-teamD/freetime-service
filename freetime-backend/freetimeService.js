@@ -27,14 +27,15 @@ const port = process.env.PORT || 3000;
 const router = express.Router();
 router.use(express.json());
 
-
+router.get("/", readHelloMessage);
+//router.get("/address", function);
 
 app.use(router);
 app.use(errorHandler);
 app.listen(port, () => console.log(`Listening on port ${port}`));
 
 // Implement the CRUD operations.
-
+//TODO: Is this really out of order?
 function errorHandler(err, req, res) {
     if (app.get('env') === "development") {
         console.log(err);
