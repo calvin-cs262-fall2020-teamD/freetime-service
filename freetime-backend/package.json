@@ -1,0 +1,33 @@
+{
+  "name": "freetime-webservice",
+  "version": "1.0.0",
+  "description": "Freetime Webservice",
+  "main": "freetimeService.js",
+  "author": "chv5",
+  "license": "ISC",
+  "engines": {
+    "node": "12.x"
+  },
+  "scripts": {
+    "start": "node freetimeService.js",
+    "start-direct": "node freetimeDirect.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "pg-promise": "^10.5.7"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/calvin-cs262-fall2020-teamD/freetime-service.git"
+  },
+  "keywords": [
+    "service",
+    "webservice",
+    "backend"
+  ],
+  "bugs": {
+    "url": "https://github.com/calvin-cs262-fall2020-teamD/freetime-service/issues"
+  },
+  "homepage": "https://github.com/calvin-cs262-fall2020-teamD/freetime-service#readme"
+}

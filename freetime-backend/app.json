@@ -1,0 +1,6 @@
+{
+  "name": "Start on Heroku: freetimeService.js",
+  "description": "Data-based webservice for the FreeTime application",
+  "repository": "https://github.com/calvin-cs262-fall2020-teamD/freetime-service",
+  "image": "heroku/nodejs"
+}
