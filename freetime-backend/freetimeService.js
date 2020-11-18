@@ -54,6 +54,7 @@ function returnDataOr404(res, data) {
 function readHelloMessage(req, res) {
     res.send('Hello, CS 262 Freetime service!');
 }
+
 /*
 function readPlayers(req, res, next) {
     db.many("SELECT * FROM Player")
