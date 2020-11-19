@@ -50,7 +50,8 @@ CREATE TABLE Groups (
 
 CREATE TABLE GroupMembers (
     memberID integer REFERENCES FTUser(ID),
-    groupID integer REFERENCES Groups(ID)
+    groupID integer REFERENCES Groups(ID),
+    confirmed BOOLEAN 
     );
 
 CREATE TABLE GroupEvent (
@@ -163,15 +164,15 @@ INSERT INTO Groups VALUES (1, '5th VanderLagerstein', 2);
 INSERT INTO Groups VALUES (2, '3rd Smith', 5);
 
 --GroupMembers(groupID, memberID)
-INSERT INTO GroupMembers VALUES (1, 1);
-INSERT INTO GroupMembers VALUES (2, 1);
-INSERT INTO GroupMembers VALUES (3, 1);
-INSERT INTO GroupMembers VALUES (4, 1);
+INSERT INTO GroupMembers VALUES (1, 1, TRUE);
+INSERT INTO GroupMembers VALUES (2, 1, TRUE);
+INSERT INTO GroupMembers VALUES (3, 1, TRUE);
+INSERT INTO GroupMembers VALUES (4, 1, TRUE);
 
-INSERT INTO GroupMembers VALUES (5, 2);
-INSERT INTO GroupMembers VALUES (6, 2);
-INSERT INTO GroupMembers VALUES (7, 2);
-INSERT INTO GroupMembers VALUES (8, 2);
+INSERT INTO GroupMembers VALUES (5, 2, TRUE);
+INSERT INTO GroupMembers VALUES (6, 2, TRUE);
+INSERT INTO GroupMembers VALUES (7, 2, TRUE);
+INSERT INTO GroupMembers VALUES (8, 2, TRUE);
 
 --GroupEvent(ID, groupID, eventName, startTime, endTime, date)
 INSERT INTO GroupEvent VALUES (1, 1,    'Smash Tournament', '18:00:00', '20:00:00', '2020-10-22');
