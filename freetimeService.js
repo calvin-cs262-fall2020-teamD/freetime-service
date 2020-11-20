@@ -29,8 +29,8 @@ router.use(express.json());
 
 router.get("/", readHelloMessage);
 //router.get("/address", function);
-router.get("/User/:usrn", authenticateUsername);
-router.get("/User/:pass", authenticatePassword);
+// router.get("/User/:username", authenticateUsername);
+router.get("/Pass/:id", authenticatePassword);
 
 //Temp thing
 router.get("/Users", getUsers);
@@ -60,20 +60,21 @@ function readHelloMessage(req, res) {
     res.send('Hello, CS 262 Freetime service!');
 }
 
-function getUsers(req, res, next) {
-    db.many("SELECT * FROM FTUser")
-        .then(data => {
-            res.send(data);
-        })
-        .catch(err => {
-            next(err);
-        })
-}
-}
+
+
 
 //Checking login details
-function authenticateUsername(req, res, next) {
-    db.one(`SELECT username FROM FTUser WHERE username=${req.params.usrn}`)
+// function authenticateUsername(req, res, next) {
+//     db.many(`SELECT username FROM FTUser WHERE username = ${req.params.username}`)
+//         .then(data => {
+//             res.send(data);
+//         })
+//         .catch(err => {
+//             next(err);
+//         })
+// }
+function getUsers(req, res, next) {
+    db.many("SELECT ID, username FROM FTUser")
         .then(data => {
             res.send(data);
         })
@@ -82,7 +83,7 @@ function authenticateUsername(req, res, next) {
         })
 }
 function authenticatePassword(req, res, next) {
-    db.one(`SELECT username FROM FTUser WHERE userPassword=${req.params.pass}`)
+    db.oneOrNone(`SELECT * FROM FTUser WHERE id = ${req.params.id}`)
         .then(data => {
             res.send(data);
         })
