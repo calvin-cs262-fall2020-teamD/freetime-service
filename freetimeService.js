@@ -65,7 +65,7 @@ function readHelloMessage(req, res) {
 
 //Checking login details
 function getUsers(req, res, next) {
-    db.many("SELECT ID, username FROM FTUser")
+    db.many("SELECT * FROM FTUser")
         .then(data => {
             res.send(data);
         })
