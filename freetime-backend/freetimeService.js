@@ -29,6 +29,11 @@ router.use(express.json());
 
 router.get("/", readHelloMessage);
 //router.get("/address", function);
+router.get("/User/:usrn", authenticateUsername);
+router.get("/User/:pass", authenticatePassword);
+
+//Temp thing
+router.get("/Users", getUsers);
 
 app.use(router);
 app.use(errorHandler);
@@ -55,6 +60,36 @@ function readHelloMessage(req, res) {
     res.send('Hello, CS 262 Freetime service!');
 }
 
+function getUsers(req, res, next) {
+    db.many("SELECT * FROM FTUser")
+        .then(data => {
+            res.send(data);
+        })
+        .catch(err => {
+            next(err);
+        })
+}
+}
+
+//Checking login details
+function authenticateUsername(req, res, next) {
+    db.one(`SELECT username FROM FTUser WHERE username=${req.params.usrn}`)
+        .then(data => {
+            res.send(data);
+        })
+        .catch(err => {
+            next(err);
+        })
+}
+function authenticatePassword(req, res, next) {
+    db.one(`SELECT username FROM FTUser WHERE userPassword=${req.params.pass}`)
+        .then(data => {
+            res.send(data);
+        })
+        .catch(err => {
+            next(err);
+        })
+}
 
 /*
 function readPlayers(req, res, next) {
