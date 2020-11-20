@@ -30,6 +30,11 @@ router.use(express.json());
 router.get("/", readHelloMessage);
 //router.get("/address", function);
 
+//Authentication routes
+router.get("/Users", getUsers);
+router.get("/Pass/:id", authenticatePassword);
+
+
 app.use(router);
 app.use(errorHandler);
 app.listen(port, () => console.log(`Listening on port ${port}`));
@@ -55,6 +60,28 @@ function readHelloMessage(req, res) {
     res.send('Hello, CS 262 Freetime service!');
 }
 
+
+
+
+//Checking login details
+function getUsers(req, res, next) {
+    db.many("SELECT ID, username FROM FTUser")
+        .then(data => {
+            res.send(data);
+        })
+        .catch(err => {
+            next(err);
+        })
+}
+function authenticatePassword(req, res, next) {
+    db.oneOrNone(`SELECT * FROM FTUser WHERE id = ${req.params.id}`)
+        .then(data => {
+            res.send(data);
+        })
+        .catch(err => {
+            next(err);
+        })
+}
 
 /*
 function readPlayers(req, res, next) {
