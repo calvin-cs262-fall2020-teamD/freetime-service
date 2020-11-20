@@ -29,11 +29,11 @@ router.use(express.json());
 
 router.get("/", readHelloMessage);
 //router.get("/address", function);
-// router.get("/User/:username", authenticateUsername);
+
+//Authentication routes
+router.get("/Users", getUsers);
 router.get("/Pass/:id", authenticatePassword);
 
-//Temp thing
-router.get("/Users", getUsers);
 
 app.use(router);
 app.use(errorHandler);
@@ -64,15 +64,6 @@ function readHelloMessage(req, res) {
 
 
 //Checking login details
-// function authenticateUsername(req, res, next) {
-//     db.many(`SELECT username FROM FTUser WHERE username = ${req.params.username}`)
-//         .then(data => {
-//             res.send(data);
-//         })
-//         .catch(err => {
-//             next(err);
-//         })
-// }
 function getUsers(req, res, next) {
     db.many("SELECT ID, username FROM FTUser")
         .then(data => {
