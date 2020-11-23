@@ -34,6 +34,8 @@ router.get("/", readHelloMessage);
 router.get("/Users", getUsers);
 router.get("/Pass/:id", authenticatePassword);
 
+router.get("Interests", getInterests);
+
 
 app.use(router);
 app.use(errorHandler);
@@ -75,6 +77,15 @@ function getUsers(req, res, next) {
 }
 function authenticatePassword(req, res, next) {
     db.oneOrNone(`SELECT * FROM FTUser WHERE id = ${req.params.id}`)
+        .then(data => {
+            res.send(data);
+        })
+        .catch(err => {
+            next(err);
+        })
+}
+function getInterests(req, res, next) {
+    db.many("SELECT * FROM Interest")
         .then(data => {
             res.send(data);
         })
