@@ -43,7 +43,7 @@ CREATE TABLE FreeTime (
     );
 
 CREATE TABLE Groups (
-	ID integer PRIMARY KEY, 
+	ID integer PRIMARY KEY,
 	groupName varchar(20) NOT NULL,
     adminID integer REFERENCES FTUser(ID)
 	);
@@ -51,7 +51,7 @@ CREATE TABLE Groups (
 CREATE TABLE GroupMembers (
     memberID integer REFERENCES FTUser(ID),
     groupID integer REFERENCES Groups(ID),
-    confirmed BOOLEAN 
+    confirmed BOOLEAN
     );
 
 CREATE TABLE GroupEvent (
@@ -142,6 +142,7 @@ INSERT INTO Interest VALUES (4, 'Movies');
 INSERT INTO Interest VALUES (5, 'Concerts');
 INSERT INTO Interest VALUES (6, 'Volleyball');
 INSERT INTO Interest VALUES (7, 'Backpacking');
+INSERT INTO Interest VALUES (8, 'Running');
 
 --UserInterests(userID, interestID)
 --Bill's interests
