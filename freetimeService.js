@@ -94,9 +94,7 @@ function getAllData(req, res, next) {
 }
 //Creating a user
 function createUser(req, res, next) {
-    console.log(req.body.username)
-    console.log(req.body.userPassword)
-    db.oneOrNone(`INSERT INTO FTUser (username, userPassword) VALUES ('Admin', 'admin')`) //($(username), $(userPassword))
+    db.oneOrNone(`INSERT INTO FTUser (username, userPassword) VALUES ($(username), $(userPassword))`, req.body) //($(username), $(userPassword))
         .then(data => {
             res.send(data);
         })
