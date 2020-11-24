@@ -85,7 +85,7 @@ function authenticatePassword(req, res, next) {
 
 //Creating a user
 function createUser(req, res, next) {
-    db.one(`INSERT INTO FTUser(username, userPassword) VALUES ($(username), $(userPassword)) RETURNING ID`, req.body)
+    db.one(`INSERT INTO FTUser(username, userPassword) VALUES (${req.body.username}, ${req.body.userPassword}) RETURNING ID`)
         .then(data => {
             res.send(data);
         })
