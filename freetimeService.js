@@ -85,7 +85,7 @@ function authenticatePassword(req, res, next) {
 
 //Creating a user
 function createUser(req, res, next) {
-    db.one(`INSERT INTO Player(username, userPassword) VALUES (${username}, ${userPassword}) RETURNING id`, req.body)
+    db.one(`INSERT INTO Player(username, userPassword) VALUES ($(username), $(userPassword)) RETURNING id`, req.body)
         .then(data => {
             res.send(data);
         })
