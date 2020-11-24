@@ -14,7 +14,7 @@ DROP TABLE IF EXISTS GroupMembers;
 DROP TABLE IF EXISTS GroupEvent;
 
 CREATE TABLE FTUser (
-	ID integer PRIMARY KEY,
+	ID SERIAL PRIMARY KEY,
     username varchar(12) NOT NULL,
     userPassword varchar(64) NOT NULL
     );
@@ -43,19 +43,25 @@ CREATE TABLE FreeTime (
     );
 
 CREATE TABLE Groups (
-	ID integer PRIMARY KEY,
+	ID SERIAL PRIMARY KEY, 
 	groupName varchar(20) NOT NULL,
     adminID integer REFERENCES FTUser(ID)
 	);
 
-CREATE TABLE GroupMembers (
+--This keeps track of what groups a member is in
+CREATE TABLE GroupMembers ( 
     memberID integer REFERENCES FTUser(ID),
-    groupID integer REFERENCES Groups(ID),
-    confirmed BOOLEAN
+    groupID integer REFERENCES Groups(ID)
     );
 
+--This looks identical, but it's meant to be a middleman for a user getting entered into GroupMembers
+CREATE TABLE GroupInvites ( 
+    userID integer REFERENCES FTUser(ID),
+    groupID integer REFERENCES Groups(ID)
+);
+
 CREATE TABLE GroupEvent (
-    ID integer PRIMARY KEY,
+    ID SERIAL PRIMARY KEY,
 	groupID integer REFERENCES Groups(ID),
     eventName varchar(20) NOT NULL,
     startTime time,
@@ -73,15 +79,15 @@ GRANT SELECT ON GroupMembers TO PUBLIC;
 GRANT SELECT ON GroupEvent TO PUBLIC;
 
 --FTUser(ID, username, password)
-INSERT INTO FTUser VALUES (1, 'Bill', 'Baconstripsandbaconstrips');
-INSERT INTO FTUser VALUES (2, 'Dill', 'Lionsandtigersandbears');
-INSERT INTO FTUser VALUES (3, 'Jill', 'abc123');
-INSERT INTO FTUser VALUES (4, 'Gill', 'turducken5');
+INSERT INTO FTUser (username, userPassword) VALUES ('Bill', 'Baconstripsandbaconstrips');
+INSERT INTO FTUser (username, userPassword) VALUES ('Dill', 'Lionsandtigersandbears');
+INSERT INTO FTUser (username, userPassword) VALUES ('Jill', 'abc123');
+INSERT INTO FTUser (username, userPassword) VALUES ('Gill', 'turducken5');
 
-INSERT INTO FTUser VALUES (5, 'Owen', 'fancyPants');
-INSERT INTO FTUser VALUES (6, 'Josh', 'bearDown5!!');
-INSERT INTO FTUser VALUES (7, 'Donald', 'quacker5?');
-INSERT INTO FTUser VALUES (8, 'Michelange', 'fanta5ia');
+INSERT INTO FTUser (username, userPassword) VALUES ('Owen', 'fancyPants');
+INSERT INTO FTUser (username, userPassword) VALUES ('Josh', 'bearDown5!!');
+INSERT INTO FTUser (username, userPassword) VALUES ('Donald', 'quacker5?');
+INSERT INTO FTUser (username, userPassword) VALUES ('Michelange', 'fanta5ia');
 
 --FreeTime(userID, startTime, endTime, date)
 --Bill's free time
@@ -161,19 +167,19 @@ INSERT INTO UserInterests VALUES (4, 2);
 INSERT INTO UserInterests VALUES (4, 7);
 
 --Group(ID, groupName, adminID)
-INSERT INTO Groups VALUES (1, '5th VanderLagerstein', 2);
-INSERT INTO Groups VALUES (2, '3rd Smith', 5);
+INSERT INTO Groups (groupName, adminID) VALUES ('5th VanderLagerstein', 2);
+INSERT INTO Groups (groupName, adminID) VALUES ('3rd Smith', 5);
 
 --GroupMembers(groupID, memberID)
-INSERT INTO GroupMembers VALUES (1, 1, TRUE);
-INSERT INTO GroupMembers VALUES (2, 1, TRUE);
-INSERT INTO GroupMembers VALUES (3, 1, TRUE);
-INSERT INTO GroupMembers VALUES (4, 1, TRUE);
+INSERT INTO GroupMembers VALUES (1, 1);
+INSERT INTO GroupMembers VALUES (2, 1);
+INSERT INTO GroupMembers VALUES (3, 1);
+INSERT INTO GroupMembers VALUES (4, 1);
 
-INSERT INTO GroupMembers VALUES (5, 2, TRUE);
-INSERT INTO GroupMembers VALUES (6, 2, TRUE);
-INSERT INTO GroupMembers VALUES (7, 2, TRUE);
-INSERT INTO GroupMembers VALUES (8, 2, TRUE);
+INSERT INTO GroupMembers VALUES (5, 2);
+INSERT INTO GroupMembers VALUES (6, 2);
+INSERT INTO GroupMembers VALUES (7, 2);
+INSERT INTO GroupMembers VALUES (8, 2);
 
 --GroupEvent(ID, groupID, eventName, startTime, endTime, date)
-INSERT INTO GroupEvent VALUES (1, 1,    'Smash Tournament', '18:00:00', '20:00:00', '2020-10-22');
+INSERT INTO GroupEvent (groupID, eventName, startTime, endTime, date) VALUES (1,    'Smash Tournament', '18:00:00', '20:00:00', '2020-10-22');

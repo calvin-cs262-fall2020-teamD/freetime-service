@@ -33,7 +33,8 @@ router.get("/", readHelloMessage);
 //Authentication routes
 router.get("/Users", getUsers);
 router.get("/Pass/:id", authenticatePassword);
-
+router.get("/allusers",getAllData); //This is just for developer viewing of the DB, will delete later
+router.post("/createuser", createUser);
 router.get("/Interests", getInterests);
 router.get("/User/Interests/:id", getUserInterests);
 router.get("/User/Groups/:id", getUserGroups);
@@ -66,7 +67,7 @@ function readHelloMessage(req, res) {
 
 //Checking login details
 function getUsers(req, res, next) {
-    db.many("SELECT ID, username FROM FTUser")
+    db.many(`SELECT id, username FROM FTUser`)
         .then(data => {
             res.send(data);
         })
@@ -83,8 +84,27 @@ function authenticatePassword(req, res, next) {
             next(err);
         })
 }
+function getAllData(req, res, next) {
+    db.many("SELECT * FROM FTUser")
+      .then(data => {
+            res.send(data);
+        })
+        .catch(err => {
+            next(err);
+        })
+}
 function getInterests(req, res, next) {
     db.many(`SELECT * FROM Interest`)
+        .then(data => {
+            res.send(data);
+        })
+        .catch(err => {
+            next(err);
+        })
+}
+//Creating a user
+function createUser(req, res, next) {
+    db.oneOrNone(`INSERT INTO FTUser (username, userPassword) VALUES ($(username), $(userPassword)) RETURNING id`, req.body)
         .then(data => {
             res.send(data);
         })
