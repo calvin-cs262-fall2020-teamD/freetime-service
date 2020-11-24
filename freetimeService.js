@@ -12,7 +12,7 @@
 
 const pgp = require('pg-promise')();
 const db = pgp({
-    host: "suleiman.db.elephantsql.com",
+    host: "lallah.db.elephantsql.com",
     port: 5432,
     database: process.env.USER,
     user: process.env.USER,
@@ -60,9 +60,6 @@ function returnDataOr404(res, data) {
 function readHelloMessage(req, res) {
     res.send('Hello, CS 262 Freetime service!');
 }
-
-
-
 
 //Checking login details
 function getUsers(req, res, next) {
