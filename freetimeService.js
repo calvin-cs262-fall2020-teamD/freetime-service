@@ -34,7 +34,7 @@ router.get("/", readHelloMessage);
 router.get("/Users", getUsers);
 router.get("/Pass/:id", authenticatePassword);
 
-router.get("Interests", getInterests);
+router.get("/Interests", getInterests);
 
 
 app.use(router);
