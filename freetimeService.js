@@ -35,7 +35,9 @@ router.get("/Users", getUsers);
 router.get("/Pass/:id", authenticatePassword);
 
 router.get("/Interests", getInterests);
-
+router.get("/User/Interests/:id", getUserInterests);
+router.get("/User/Groups/:id", getUserGroups);
+//router.get("/User/Groups/Members/:id", getUserGroupsMembers); // to be added again
 
 app.use(router);
 app.use(errorHandler);
@@ -62,9 +64,6 @@ function readHelloMessage(req, res) {
     res.send('Hello, CS 262 Freetime service!');
 }
 
-
-
-
 //Checking login details
 function getUsers(req, res, next) {
     db.many("SELECT ID, username FROM FTUser")
@@ -85,7 +84,7 @@ function authenticatePassword(req, res, next) {
         })
 }
 function getInterests(req, res, next) {
-    db.many("SELECT * FROM Interest")
+    db.many(`SELECT * FROM Interest`)
         .then(data => {
             res.send(data);
         })
@@ -93,6 +92,35 @@ function getInterests(req, res, next) {
             next(err);
         })
 }
+function getUserInterests(req, res, next) {
+    db.many(`SELECT interestName, Interest.ID FROM Interest, UserInterests WHERE Interest.ID = UserInterests.interestID AND UserInterests.userID = ${req.params.id}`)
+        .then(data => {
+            res.send(data);
+        })
+        .catch(err => {
+            next(err);
+        })
+}
+function getUserGroups(req, res, next) {
+    db.many(`SELECT groupName, username FROM FTUser, Groups, GroupMembers WHERE Groups.ID = GroupMembers.groupID AND Groups.adminID = FTUser.ID AND GroupMembers.memberID = ${req.params.id}`)
+        .then(data => {
+            res.send(data);
+        })
+        .catch(err => {
+            next(err);
+        })
+}
+
+// To be added again --save
+// function getUserGroupsMembers(req, res, next) {
+//     db.many(`SELECT username, confirmed FROM FTUser, Groups, GroupMembers WHERE Groups.ID = GroupMembers.groupID AND GroupMembers.memberID = ${req.params.id}`)
+//         .then(data => {
+//             res.send(data);
+//         })
+//         .catch(err => {
+//             next(err);
+//         })
+// }
 
 /*
 function readPlayers(req, res, next) {
