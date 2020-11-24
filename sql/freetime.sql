@@ -43,19 +43,25 @@ CREATE TABLE FreeTime (
     );
 
 CREATE TABLE Groups (
-	ID integer PRIMARY KEY, 
+	ID SERIAL PRIMARY KEY, 
 	groupName varchar(20) NOT NULL,
     adminID integer REFERENCES FTUser(ID)
 	);
 
-CREATE TABLE GroupMembers (
+--This keeps track of what groups a member is in
+CREATE TABLE GroupMembers ( 
     memberID integer REFERENCES FTUser(ID),
-    groupID integer REFERENCES Groups(ID),
-    confirmed BOOLEAN 
+    groupID integer REFERENCES Groups(ID)
     );
 
+--This looks identical, but it's meant to be a middleman for a user getting entered into GroupMembers
+CREATE TABLE GroupInvites ( 
+    userID integer REFERENCES FTUser(ID),
+    groupID integer REFERENCES Groups(ID)
+);
+
 CREATE TABLE GroupEvent (
-    ID integer PRIMARY KEY,
+    ID SERIAL PRIMARY KEY,
 	groupID integer REFERENCES Groups(ID),
     eventName varchar(20) NOT NULL,
     startTime time,
@@ -160,19 +166,19 @@ INSERT INTO UserInterests VALUES (4, 2);
 INSERT INTO UserInterests VALUES (4, 7);
 
 --Group(ID, groupName, adminID)
-INSERT INTO Groups VALUES (1, '5th VanderLagerstein', 2);
-INSERT INTO Groups VALUES (2, '3rd Smith', 5);
+INSERT INTO Groups (groupName, adminID) VALUES ('5th VanderLagerstein', 2);
+INSERT INTO Groups (groupName, adminID) VALUES ('3rd Smith', 5);
 
 --GroupMembers(groupID, memberID)
-INSERT INTO GroupMembers VALUES (1, 1, TRUE);
-INSERT INTO GroupMembers VALUES (2, 1, TRUE);
-INSERT INTO GroupMembers VALUES (3, 1, TRUE);
-INSERT INTO GroupMembers VALUES (4, 1, TRUE);
+INSERT INTO GroupMembers VALUES (1, 1);
+INSERT INTO GroupMembers VALUES (2, 1);
+INSERT INTO GroupMembers VALUES (3, 1);
+INSERT INTO GroupMembers VALUES (4, 1);
 
-INSERT INTO GroupMembers VALUES (5, 2, TRUE);
-INSERT INTO GroupMembers VALUES (6, 2, TRUE);
-INSERT INTO GroupMembers VALUES (7, 2, TRUE);
-INSERT INTO GroupMembers VALUES (8, 2, TRUE);
+INSERT INTO GroupMembers VALUES (5, 2);
+INSERT INTO GroupMembers VALUES (6, 2);
+INSERT INTO GroupMembers VALUES (7, 2);
+INSERT INTO GroupMembers VALUES (8, 2);
 
 --GroupEvent(ID, groupID, eventName, startTime, endTime, date)
-INSERT INTO GroupEvent VALUES (1, 1,    'Smash Tournament', '18:00:00', '20:00:00', '2020-10-22');
+INSERT INTO GroupEvent (groupID, eventName, startTime, endTime, date) VALUES (1,    'Smash Tournament', '18:00:00', '20:00:00', '2020-10-22');

@@ -33,7 +33,7 @@ router.get("/", readHelloMessage);
 //Authentication routes
 router.get("/Users", getUsers);
 router.get("/Pass/:id", authenticatePassword);
-router.get("/allusers",getAllData);
+router.get("/allusers",getAllData); //This is just for developer viewing of the DB, will delete later
 router.post("/createuser", createUser);
 
 app.use(router);
@@ -94,7 +94,7 @@ function getAllData(req, res, next) {
 }
 //Creating a user
 function createUser(req, res, next) {
-    db.oneOrNone(`INSERT INTO FTUser (username, userPassword) VALUES ($(username), $(userPassword))`, req.body)
+    db.oneOrNone(`INSERT INTO FTUser (username, userPassword) VALUES ($(username), $(userPassword)) RETURNING id`, req.body)
         .then(data => {
             res.send(data);
         })
