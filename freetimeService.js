@@ -33,7 +33,7 @@ router.get("/", readHelloMessage);
 //Authentication routes
 router.get("/Users", getUsers);
 router.get("/Pass/:id", authenticatePassword);
-
+router.post("createuser", createUser);
 
 app.use(router);
 app.use(errorHandler);
@@ -81,6 +81,17 @@ function authenticatePassword(req, res, next) {
         .catch(err => {
             next(err);
         })
+}
+
+//Creating a user
+function createUser(req, res, next) {
+    db.one(`INSERT INTO Player(username, userPassword) VALUES (${username}, ${userPassword}) RETURNING id`, req.body)
+        .then(data => {
+            res.send(data);
+        })
+        .catch(err => {
+            next(err);
+    });
 }
 
 /*
