@@ -87,7 +87,7 @@ function authenticatePassword(req, res, next) {
 function createUser(req, res, next) {
     console.log(req.body.username)
     console.log(req.body.userPassword)
-    db.oneOrNone(`INSERT INTO FTUser (username, userPassword) VALUES ('${req.body.username}', '${req.body.userPassword}')`, req.body) //($(username), $(userPassword))
+    db.oneOrNone(`INSERT INTO FTUser (username, userPassword) VALUES ('Admin', 'admin')`, req.body) //($(username), $(userPassword))
         .then(data => {
             res.send(data);
         })
