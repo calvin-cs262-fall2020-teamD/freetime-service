@@ -34,7 +34,7 @@ router.get("/", readHelloMessage);
 router.get("/Users", getUsers);
 router.get("/Pass/:id", authenticatePassword);
 router.get("/allusers",getAllData);
-router.post("/allusers", createUser);
+router.post("/createuser", createUser);
 
 app.use(router);
 app.use(errorHandler);
@@ -94,7 +94,7 @@ function getAllData(req, res, next) {
 }
 //Creating a user
 function createUser(req, res, next) {
-    db.oneOrNone(`INSERT INTO FTUser (username, userPassword) VALUES ($(username), $(userPassword))`, req.body) //($(username), $(userPassword))
+    db.oneOrNone(`INSERT INTO FTUser (username, userPassword) VALUES ($(username), $(userPassword))`, req.body)
         .then(data => {
             res.send(data);
         })
