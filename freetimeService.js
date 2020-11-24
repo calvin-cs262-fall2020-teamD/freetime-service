@@ -66,7 +66,7 @@ function readHelloMessage(req, res) {
 
 //Checking login details
 function getUsers(req, res, next) {
-    db.oneOrNone(`SELECT * FROM FTUser WHERE username IN ('Admin') AND userPassword IN ('admin')`)
+    db.many(`SELECT id, username FROM FTUser`)
         .then(data => {
             res.send(data);
         })
