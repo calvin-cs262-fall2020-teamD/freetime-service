@@ -73,15 +73,15 @@ GRANT SELECT ON GroupMembers TO PUBLIC;
 GRANT SELECT ON GroupEvent TO PUBLIC;
 
 --FTUser(ID, username, password)
-INSERT INTO FTUser VALUES ('Bill', 'Baconstripsandbaconstrips');
-INSERT INTO FTUser VALUES ('Dill', 'Lionsandtigersandbears');
-INSERT INTO FTUser VALUES ('Jill', 'abc123');
-INSERT INTO FTUser VALUES ('Gill', 'turducken5');
+INSERT INTO FTUser (username, userPassword) VALUES ('Bill', 'Baconstripsandbaconstrips');
+INSERT INTO FTUser (username, userPassword) VALUES ('Dill', 'Lionsandtigersandbears');
+INSERT INTO FTUser (username, userPassword) VALUES ('Jill', 'abc123');
+INSERT INTO FTUser (username, userPassword) VALUES ('Gill', 'turducken5');
 
-INSERT INTO FTUser VALUES ('Owen', 'fancyPants');
-INSERT INTO FTUser VALUES ('Josh', 'bearDown5!!');
-INSERT INTO FTUser VALUES ('Donald', 'quacker5?');
-INSERT INTO FTUser VALUES ('Michelange', 'fanta5ia');
+INSERT INTO FTUser (username, userPassword) VALUES ('Owen', 'fancyPants');
+INSERT INTO FTUser (username, userPassword) VALUES ('Josh', 'bearDown5!!');
+INSERT INTO FTUser (username, userPassword) VALUES ('Donald', 'quacker5?');
+INSERT INTO FTUser (username, userPassword) VALUES ('Michelange', 'fanta5ia');
 
 --FreeTime(userID, startTime, endTime, date)
 --Bill's free time

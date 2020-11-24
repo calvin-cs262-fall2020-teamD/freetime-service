@@ -33,7 +33,8 @@ router.get("/", readHelloMessage);
 //Authentication routes
 router.get("/Users", getUsers);
 router.get("/Pass/:id", authenticatePassword);
-router.post("createuser", createUser);
+router.get("/allusers",getAllData);
+router.post("/allusers", createUser);
 
 app.use(router);
 app.use(errorHandler);
@@ -82,18 +83,26 @@ function authenticatePassword(req, res, next) {
             next(err);
         })
 }
-
-//Creating a user
-function createUser(req, res, next) {
-    console.log(req.body.username)
-    console.log(req.body.userPassword)
-    db.oneOrNone(`INSERT INTO FTUser (username, userPassword) VALUES ('Admin', 'admin')`, req.body) //($(username), $(userPassword))
+function getAllData(req, res, next) {
+    db.many("SELECT * FROM FTUser")
         .then(data => {
             res.send(data);
         })
         .catch(err => {
             next(err);
-    });
+        })
+}
+//Creating a user
+function createUser(req, res, next) {
+    console.log(req.body.username)
+    console.log(req.body.userPassword)
+    db.oneOrNone(`INSERT INTO FTUser (username, userPassword) VALUES ('Admin', 'admin')`) //($(username), $(userPassword))
+        .then(data => {
+            res.send(data);
+        })
+        .catch(err => {
+            next(err);
+        });
 }
 
 /*
