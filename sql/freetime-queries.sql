@@ -33,3 +33,8 @@ FROM FTUser U1, UserFriendsList, FTUser U2
 WHERE U1.ID = userID
 AND U2.ID = friendID
 ;
+
+-- Get all of the interests options
+SELECT *
+FROM Interest
+;

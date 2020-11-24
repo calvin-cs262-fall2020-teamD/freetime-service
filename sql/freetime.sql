@@ -148,6 +148,7 @@ INSERT INTO Interest VALUES (4, 'Movies');
 INSERT INTO Interest VALUES (5, 'Concerts');
 INSERT INTO Interest VALUES (6, 'Volleyball');
 INSERT INTO Interest VALUES (7, 'Backpacking');
+INSERT INTO Interest VALUES (8, 'Running');
 
 --UserInterests(userID, interestID)
 --Bill's interests
