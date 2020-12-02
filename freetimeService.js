@@ -12,7 +12,7 @@
 
 const pgp = require('pg-promise')();
 const db = pgp({
-    host: "lallah.db.elephantsql.com",
+    host: "suleiman.db.elephantsql.com",
     port: 5432,
     database: process.env.USER,
     user: process.env.USER,
@@ -35,6 +35,7 @@ router.get("/Users", getUsers);
 router.get("/Pass/:id", authenticatePassword);
 router.get("/allusers",getAllData); //This is just for developer viewing of the DB, will delete later
 router.post("/createuser", createUser);
+router.post("/uploadtimes", uploadtimes);
 router.get("/Interests", getInterests);
 router.get("/User/Interests/:id", getUserInterests);
 router.get("/User/Groups/:id", getUserGroups);
@@ -130,7 +131,15 @@ function getUserGroups(req, res, next) {
             next(err);
         })
 }
-
+function uploadtimes(req, res, next) {
+    db.oneOrNone(`INSERT INTO FreeTime (userID, starttime, endtime, weekday) VALUES ($(userID), $(starttime), $(endtime), $(weekday))`, req.body)
+        .then(data => {
+            res.send(data);
+        })
+        .catch(err => {
+            next(err);
+        })
+}
 // To be added again --save
 // function getUserGroupsMembers(req, res, next) {
 //     db.many(`SELECT username, confirmed FROM FTUser, Groups, GroupMembers WHERE Groups.ID = GroupMembers.groupID AND GroupMembers.memberID = ${req.params.id}`)
