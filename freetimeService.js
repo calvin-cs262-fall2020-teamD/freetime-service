@@ -36,6 +36,7 @@ router.get("/Pass/:id", authenticatePassword);
 router.get("/allusers",getAllData); //This is just for developer viewing of the DB, will delete later
 router.post("/createuser", createUser);
 router.post("/uploadtimes", uploadtimes);
+router.delete("/deletedaytimes", deletedaytimes);
 router.get("/Interests", getInterests);
 router.get("/User/Interests/:id", getUserInterests);
 router.get("/User/Groups/:id", getUserGroups);
@@ -139,6 +140,15 @@ function uploadtimes(req, res, next) {
         .catch(err => {
             next(err);
         })
+}
+function deletedaytimes(req, res, next) {
+    db.oneOrNone(`DELETE FROM FreeTime WHERE userID=$(userID) AND weekday=$(weekday)`, req.body)
+        .then(data => {
+            returnDataOr404(res, data);
+        })
+        .catch(err => {
+            next(err);
+        });
 }
 // To be added again --save
 // function getUserGroupsMembers(req, res, next) {
