@@ -183,7 +183,7 @@ function deleteweektimes(req,res,next) {
         });
 }
 function deletegroup(req, res, next) {
-    db.oneOrNone(`DELETE FROM Groups WHERE groupID=$(groupID)`, req.body)
+    db.oneOrNone(`DELETE FROM Groups WHERE id=$(id)`, req.body)
         .then(data => {
             returnDataOr404(res, data);
         })
