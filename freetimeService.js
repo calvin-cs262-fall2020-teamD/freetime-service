@@ -38,6 +38,7 @@ router.post("/createuser", createUser);
 router.post("/uploadtimes", uploadtimes);
 router.post("/creategroup", creategroup);
 router.post("/addgroupmember", addgroupmember);
+router.put("/changegroupname", changegroupname);
 router.delete("/deletedaytimes", deletedaytimes);
 router.delete("/deleteweektimes", deleteweektimes);
 router.delete("/deletegroup", deletegroup);
@@ -199,6 +200,15 @@ function deletegroupmembers(req, res, next) {
     .catch(err => {
         next(err);
     });
+}
+function changegroupname(req, res, next) {
+    db.oneOrNone(`UPDATE groups SET groupname=$(groupname) WHERE id=$(id)`, req.body)
+        .then(data => {
+            returnDataOr404(res, data);
+        })
+        .catch(err => {
+            next(err);
+        });
 }
 // To be added again --save
 // function getUserGroupsMembers(req, res, next) {
