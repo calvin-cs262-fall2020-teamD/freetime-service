@@ -121,7 +121,7 @@ function createUser(req, res, next) {
         })
 }
 function getUserInterests(req, res, next) {
-    db.many(`SELECT interestName, Interest.ID FROM Interest, UserInterests WHERE Interest.ID = UserInterests.interestID AND UserInterests.userID = ${req.params.id}`)
+    db.many(`SELECT * FROM Interest, UserInterests WHERE Interest.ID = UserInterests.interestID`)
         .then(data => {
             res.send(data);
         })
