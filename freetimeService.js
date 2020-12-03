@@ -130,7 +130,7 @@ function getUserInterests(req, res, next) {
         })
 }
 function getUserGroups(req, res, next) {
-    db.many(`SELECT * FROM FTUser, Groups, GroupMembers WHERE Groups.ID = GroupMembers.groupID AND Groups.adminID = FTUser.ID`)
+    db.many(`SELECT username, groupname, adminID, memberID, groupID FROM FTUser, Groups, GroupMembers WHERE Groups.ID = GroupMembers.groupID AND Groups.adminID = FTUser.ID`)
         .then(data => {
             res.send(data);
         })
