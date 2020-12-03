@@ -43,19 +43,19 @@ CREATE TABLE FreeTime (
     );
 
 CREATE TABLE Groups (
-	ID SERIAL PRIMARY KEY, 
+	ID SERIAL PRIMARY KEY,
 	groupName varchar(20) NOT NULL,
     adminID integer REFERENCES FTUser(ID)
 	);
 
 --This keeps track of what groups a member is in
-CREATE TABLE GroupMembers ( 
+CREATE TABLE GroupMembers (
     memberID integer REFERENCES FTUser(ID),
     groupID integer REFERENCES Groups(ID)
     );
 
 --This looks identical, but it's meant to be a middleman for a user getting entered into GroupMembers
-CREATE TABLE GroupInvites ( 
+CREATE TABLE GroupInvites (
     userID integer REFERENCES FTUser(ID),
     groupID integer REFERENCES Groups(ID)
 );
@@ -180,6 +180,7 @@ INSERT INTO GroupMembers VALUES (5, 2);
 INSERT INTO GroupMembers VALUES (6, 2);
 INSERT INTO GroupMembers VALUES (7, 2);
 INSERT INTO GroupMembers VALUES (8, 2);
+INSERT INTO GroupMembers VALUES (3, 2);
 
 --GroupEvent(ID, groupID, eventName, startTime, endTime, date)
 INSERT INTO GroupEvent (groupID, eventName, startTime, endTime, date) VALUES (1,    'Smash Tournament', '18:00:00', '20:00:00', '2020-10-22');
