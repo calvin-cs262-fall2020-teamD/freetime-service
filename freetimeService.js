@@ -37,6 +37,7 @@ router.get("/allusers",getAllData); //This is just for developer viewing of the 
 router.post("/createuser", createUser);
 router.post("/uploadtimes", uploadtimes);
 router.post("/creategroup", creategroup);
+router.post("/addgroupmember", addgroupmember);
 router.delete("/deletedaytimes", deletedaytimes);
 router.delete("/deleteweektimes", deleteweektimes);
 router.delete("/deletegroup", deletegroup);
@@ -145,7 +146,16 @@ function uploadtimes(req, res, next) {
         })
 }
 function creategroup(req, res, next) {
-    db.oneOrNone(`INSERT INTO Groups (groupName, adminID) VALUES ($(groupName), $(adminID))`, req.body)
+    db.oneOrNone(`INSERT INTO Groups (groupName, adminID) VALUES ($(groupName), $(adminID)) RETURNING id`, req.body)
+        .then(data => {
+            res.send(data);
+        })
+        .catch(err => {
+            next(err);
+        })
+}
+function addgroupmember(req, res, next) {
+    db.oneOrNone(`INSERT INTO groupmembers (memberID, groupID) VALUES ($(memberID), $(groupID))`, req.body)
         .then(data => {
             res.send(data);
         })
