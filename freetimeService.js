@@ -44,8 +44,8 @@ router.delete("/deleteweektimes", deleteweektimes);
 router.delete("/deletegroup", deletegroup);
 router.delete("/deletegroupmembers", deletegroupmembers);
 router.get("/Interests", getInterests);
-router.get("/User/Interests/:id", getUserInterests);
-router.get("/User/Groups/:id", getUserGroups);
+router.get("/User/Interests", getUserInterests);
+router.get("/User/Groups", getUserGroups);
 //router.get("/User/Groups/Members/:id", getUserGroupsMembers); // to be added again
 
 app.use(router);
@@ -130,7 +130,7 @@ function getUserInterests(req, res, next) {
         })
 }
 function getUserGroups(req, res, next) {
-    db.many(`SELECT groupName, username FROM FTUser, Groups, GroupMembers WHERE Groups.ID = GroupMembers.groupID AND Groups.adminID = FTUser.ID AND GroupMembers.memberID = ${req.params.id}`)
+    db.many(`SELECT * FROM FTUser, Groups, GroupMembers WHERE Groups.ID = GroupMembers.groupID AND Groups.adminID = FTUser.ID`)
         .then(data => {
             res.send(data);
         })
