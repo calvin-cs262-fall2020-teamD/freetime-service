@@ -12,7 +12,7 @@ DROP TABLE IF EXISTS FreeTime;
 DROP TABLE IF EXISTS Groups CASCADE;
 DROP TABLE IF EXISTS GroupMembers;
 DROP TABLE IF EXISTS GroupEvent;
-
+DROP TABLE IF EXISTS GroupInvites;
 CREATE TABLE FTUser (
 	ID SERIAL PRIMARY KEY,
     username varchar(12) NOT NULL,
@@ -37,9 +37,9 @@ CREATE TABLE UserInterests (
 
 CREATE TABLE FreeTime (
     userID integer REFERENCES FTUser(ID),
-    startTime time,
-    endTime time,
-    date DATE
+    startTime varchar(4) NOT NULL,
+    endTime varchar(4) NOT NULL,
+    weekday varchar(8) NOT NULL
     );
 
 CREATE TABLE Groups (
@@ -89,27 +89,27 @@ INSERT INTO FTUser (username, userPassword) VALUES ('Josh', 'bearDown5!!');
 INSERT INTO FTUser (username, userPassword) VALUES ('Donald', 'quacker5?');
 INSERT INTO FTUser (username, userPassword) VALUES ('Michelange', 'fanta5ia');
 
---FreeTime(userID, startTime, endTime, date)
---Bill's free time
-INSERT INTO FreeTime VALUES (1, '18:00:00', '19:00:00', '2020-10-22');
---Dill's free time - bigger than Bill's
-INSERT INTO FreeTime VALUES (2, '17:00:00', '19:00:00', '2020-10-22');
-INSERT INTO FreeTime VALUES (2, '04:30:00', '06:00:00', '2020-10-22');
---Jill's free time - same length as Dill's but offset by an hour
-INSERT INTO FreeTime VALUES (3, '18:00:00', '20:00:00', '2020-10-22');
---Gill's free time - offset by half hour
-INSERT INTO FreeTime VALUES (4, '17:30:00', '20:30:00', '2020-10-22');
+-- --FreeTime(userID, startTime, endTime, date)
+-- --Bill's free time
+-- INSERT INTO FreeTime VALUES (1, '18:00:00', '19:00:00', '2020-10-22');
+-- --Dill's free time - bigger than Bill's
+-- INSERT INTO FreeTime VALUES (2, '17:00:00', '19:00:00', '2020-10-22');
+-- INSERT INTO FreeTime VALUES (2, '04:30:00', '06:00:00', '2020-10-22');
+-- --Jill's free time - same length as Dill's but offset by an hour
+-- INSERT INTO FreeTime VALUES (3, '18:00:00', '20:00:00', '2020-10-22');
+-- --Gill's free time - offset by half hour
+-- INSERT INTO FreeTime VALUES (4, '17:30:00', '20:30:00', '2020-10-22');
 
---FreeTime(userID, startTime, endTime, date)
---Bill's free time
-INSERT INTO FreeTime VALUES (5, '18:00:00', '19:00:00', '2020-10-22');
---Dill's free time - bigger than Bill's
-INSERT INTO FreeTime VALUES (6, '17:00:00', '19:00:00', '2020-10-22');
-INSERT INTO FreeTime VALUES (6, '04:30:00', '06:00:00', '2020-10-22');
---Jill's free time - same length as Dill's but offset by an hour
-INSERT INTO FreeTime VALUES (7, '18:00:00', '20:00:00', '2020-10-22');
---Gill's free time - offset by half hour
-INSERT INTO FreeTime VALUES (8, '17:30:00', '20:30:00', '2020-10-22');
+-- --FreeTime(userID, startTime, endTime, date)
+-- --Bill's free time
+-- INSERT INTO FreeTime VALUES (5, '18:00:00', '19:00:00', '2020-10-22');
+-- --Dill's free time - bigger than Bill's
+-- INSERT INTO FreeTime VALUES (6, '17:00:00', '19:00:00', '2020-10-22');
+-- INSERT INTO FreeTime VALUES (6, '04:30:00', '06:00:00', '2020-10-22');
+-- --Jill's free time - same length as Dill's but offset by an hour
+-- INSERT INTO FreeTime VALUES (7, '18:00:00', '20:00:00', '2020-10-22');
+-- --Gill's free time - offset by half hour
+-- INSERT INTO FreeTime VALUES (8, '17:30:00', '20:30:00', '2020-10-22');
 
 
 --UserFriendsList(userID, friendID)

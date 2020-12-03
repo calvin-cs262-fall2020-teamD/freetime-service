@@ -35,6 +35,14 @@ router.get("/Users", getUsers);
 router.get("/Pass/:id", authenticatePassword);
 router.get("/allusers",getAllData); //This is just for developer viewing of the DB, will delete later
 router.post("/createuser", createUser);
+router.post("/uploadtimes", uploadtimes);
+router.post("/creategroup", creategroup);
+router.post("/addgroupmember", addgroupmember);
+router.put("/changegroupname", changegroupname);
+router.delete("/deletedaytimes", deletedaytimes);
+router.delete("/deleteweektimes", deleteweektimes);
+router.delete("/deletegroup", deletegroup);
+router.delete("/deletegroupmembers", deletegroupmembers);
 router.get("/Interests", getInterests);
 router.get("/User/Interests/:id", getUserInterests);
 router.get("/User/Groups/:id", getUserGroups);
@@ -130,7 +138,78 @@ function getUserGroups(req, res, next) {
             next(err);
         })
 }
-
+function uploadtimes(req, res, next) {
+    db.oneOrNone(`INSERT INTO FreeTime (userID, starttime, endtime, weekday) VALUES ($(userID), $(starttime), $(endtime), $(weekday))`, req.body)
+        .then(data => {
+            res.send(data);
+        })
+        .catch(err => {
+            next(err);
+        })
+}
+function creategroup(req, res, next) {
+    db.oneOrNone(`INSERT INTO Groups (groupName, adminID) VALUES ($(groupName), $(adminID)) RETURNING id`, req.body)
+        .then(data => {
+            res.send(data);
+        })
+        .catch(err => {
+            next(err);
+        })
+}
+function addgroupmember(req, res, next) {
+    db.oneOrNone(`INSERT INTO GroupMembers VALUES ($(memberID), $(groupID))`, req.body)
+        .then(data => {
+            res.send(data);
+        })
+        .catch(err => {
+            next(err);
+        })
+}
+function deletedaytimes(req, res, next) {
+    db.oneOrNone(`DELETE FROM FreeTime WHERE userID=$(userID) AND weekday=$(weekday)`, req.body)
+        .then(data => {
+            returnDataOr404(res, data);
+        })
+        .catch(err => {
+            next(err);
+        });
+}
+function deleteweektimes(req,res,next) {
+    db.oneOrNone(`DELETE FROM FreeTime WHERE userID=$(userID)`, req.body)
+        .then(data => {
+            returnDataOr404(res, data);
+        })
+        .catch(err => {
+            next(err);
+        });
+}
+function deletegroup(req, res, next) {
+    db.oneOrNone(`DELETE FROM Groups WHERE id=$(id)`, req.body)
+        .then(data => {
+            returnDataOr404(res, data);
+        })
+        .catch(err => {
+            next(err);
+        });
+}
+function deletegroupmembers(req, res, next) {
+    db.oneOrNone(`DELETE FROM groupmembers WHERE groupID=$(groupID)`, req.body)
+    .then(data => {
+        returnDataOr404(res, data);
+    })
+    .catch(err => {
+        next(err);
+    });
+}
+function changegroupname(req, res, next) {
+    db.oneOrNone(`UPDATE groups SET groupname=$(groupname) WHERE id=$(id)`, req.body)
+        .then(data => {
+            returnDataOr404(res, data);
+        })
+        .catch(err => {
+            next(err);
+        });
+}
 // To be added again --save
 // function getUserGroupsMembers(req, res, next) {
 //     db.many(`SELECT username, confirmed FROM FTUser, Groups, GroupMembers WHERE Groups.ID = GroupMembers.groupID AND GroupMembers.memberID = ${req.params.id}`)
