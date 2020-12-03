@@ -155,7 +155,7 @@ function creategroup(req, res, next) {
         })
 }
 function addgroupmember(req, res, next) {
-    db.oneOrNone(`INSERT INTO groupmembers (memberID, groupID) VALUES ($(memberID), $(groupID))`, req.body)
+    db.oneOrNone(`INSERT INTO GroupMembers VALUES ($(memberID), $(groupID))`, req.body)
         .then(data => {
             res.send(data);
         })
