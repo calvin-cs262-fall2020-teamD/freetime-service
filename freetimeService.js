@@ -41,6 +41,7 @@ router.post("/addgroupmember", addgroupmember);
 router.delete("/deletedaytimes", deletedaytimes);
 router.delete("/deleteweektimes", deleteweektimes);
 router.delete("/deletegroup", deletegroup);
+router.delete("/deletegroupmembers", deletegroupmembers);
 router.get("/Interests", getInterests);
 router.get("/User/Interests/:id", getUserInterests);
 router.get("/User/Groups/:id", getUserGroups);
@@ -189,6 +190,15 @@ function deletegroup(req, res, next) {
         .catch(err => {
             next(err);
         });
+}
+function deletegroupmembers(req, res, next) {
+    db.oneOrNone(`DELETE FROM groupmembers WHERE groupID=$(groupID)`, req.body)
+    .then(data => {
+        returnDataOr404(res, data);
+    })
+    .catch(err => {
+        next(err);
+    });
 }
 // To be added again --save
 // function getUserGroupsMembers(req, res, next) {
