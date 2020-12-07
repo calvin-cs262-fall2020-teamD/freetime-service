@@ -45,8 +45,10 @@ router.delete("/deletegroup", deletegroup);
 router.delete("/deletegroupmembers", deletegroupmembers);
 router.get("/Interests", getInterests);
 router.get("/User/Interests", getUserInterests);
+router.post("/User/addInterest", addInterest);
+router.delete("/User/deleteInterest", deleteInterest);
 router.get("/User/Groups", getUserGroups);
-//router.get("/User/Groups/Members/:id", getUserGroupsMembers); // to be added again
+router.get("/User/Groups/Members", getUserGroupsMembers); // to be added again
 
 app.use(router);
 app.use(errorHandler);
@@ -129,8 +131,35 @@ function getUserInterests(req, res, next) {
             next(err);
         })
 }
+function addInterest(req, res, next) {
+    db.oneOrNone(`INSERT INTO UserInterests (userID, interestID) VALUES ($(userID), $(interestID))`, req.body)
+        .then(data => {
+            res.send(data);
+        })
+        .catch(err => {
+            next(err);
+        })
+}
+function deleteInterest(req, res, next) {
+    db.oneOrNone(`DELETE FROM UserInterests WHERE userID=$(userID) AND interestID=$(interestID)`, req.body) //(userID, interestID) VALUES ($(userID), $(interestID))
+        .then(data => {
+            returnDataOr404(res, data);
+        })
+        .catch(err => {
+            next(err);
+        })
+}
 function getUserGroups(req, res, next) {
     db.many(`SELECT username, groupname, adminID, memberID, groupID FROM FTUser, Groups, GroupMembers WHERE Groups.ID = GroupMembers.groupID AND Groups.adminID = FTUser.ID`)
+        .then(data => {
+            res.send(data);
+        })
+        .catch(err => {
+            next(err);
+        })
+}
+function getUserGroupsMembers(req, res, next) {
+    db.many(`SELECT username, groupname, adminID, memberID, groupID FROM FTUser, Groups, GroupMembers WHERE Groups.ID = GroupMembers.groupID AND GroupMembers.memberID = FTUser.ID`)
         .then(data => {
             res.send(data);
         })
@@ -157,7 +186,7 @@ function creategroup(req, res, next) {
         })
 }
 function addgroupmember(req, res, next) {
-    db.oneOrNone(`INSERT INTO GroupMembers VALUES ($(memberID), $(groupID))`, req.body)
+    db.oneOrNone(`INSERT INTO GroupMembers (memberID, groupID) VALUES ($(memberID), $(groupID))`, req.body)
         .then(data => {
             res.send(data);
         })
