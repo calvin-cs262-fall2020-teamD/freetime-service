@@ -39,6 +39,7 @@ router.post("/uploadtimes", uploadtimes);
 router.post("/creategroup", creategroup);
 router.post("/addgroupmember", addgroupmember);
 router.put("/changegroupname", changegroupname);
+router.put("/getfreetimes", getfreetimes);
 router.delete("/deletedaytimes", deletedaytimes);
 router.delete("/deleteweektimes", deleteweektimes);
 router.delete("/deletegroup", deletegroup);
@@ -187,6 +188,15 @@ function creategroup(req, res, next) {
 }
 function addgroupmember(req, res, next) {
     db.oneOrNone(`INSERT INTO GroupMembers (memberID, groupID) VALUES ($(memberID), $(groupID))`, req.body)
+        .then(data => {
+            res.send(data);
+        })
+        .catch(err => {
+            next(err);
+        })
+}
+function getfreetimes(req, res, next) {
+    db.many(`SELECT * FROM FreeTime`)
         .then(data => {
             res.send(data);
         })

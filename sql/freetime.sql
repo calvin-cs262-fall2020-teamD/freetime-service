@@ -39,7 +39,7 @@ CREATE TABLE FreeTime (
     userID integer REFERENCES FTUser(ID),
     startTime varchar(4) NOT NULL,
     endTime varchar(4) NOT NULL,
-    weekday varchar(8) NOT NULL
+    weekday varchar(9) NOT NULL
     );
 
 CREATE TABLE Groups (
@@ -89,27 +89,50 @@ INSERT INTO FTUser (username, userPassword) VALUES ('Josh', 'bearDown5!!');
 INSERT INTO FTUser (username, userPassword) VALUES ('Donald', 'quacker5?');
 INSERT INTO FTUser (username, userPassword) VALUES ('Michelange', 'fanta5ia');
 
--- --FreeTime(userID, startTime, endTime, date)
--- --Bill's free time
--- INSERT INTO FreeTime VALUES (1, '18:00:00', '19:00:00', '2020-10-22');
--- --Dill's free time - bigger than Bill's
--- INSERT INTO FreeTime VALUES (2, '17:00:00', '19:00:00', '2020-10-22');
--- INSERT INTO FreeTime VALUES (2, '04:30:00', '06:00:00', '2020-10-22');
--- --Jill's free time - same length as Dill's but offset by an hour
--- INSERT INTO FreeTime VALUES (3, '18:00:00', '20:00:00', '2020-10-22');
--- --Gill's free time - offset by half hour
--- INSERT INTO FreeTime VALUES (4, '17:30:00', '20:30:00', '2020-10-22');
-
--- --FreeTime(userID, startTime, endTime, date)
--- --Bill's free time
--- INSERT INTO FreeTime VALUES (5, '18:00:00', '19:00:00', '2020-10-22');
--- --Dill's free time - bigger than Bill's
--- INSERT INTO FreeTime VALUES (6, '17:00:00', '19:00:00', '2020-10-22');
--- INSERT INTO FreeTime VALUES (6, '04:30:00', '06:00:00', '2020-10-22');
--- --Jill's free time - same length as Dill's but offset by an hour
--- INSERT INTO FreeTime VALUES (7, '18:00:00', '20:00:00', '2020-10-22');
--- --Gill's free time - offset by half hour
--- INSERT INTO FreeTime VALUES (8, '17:30:00', '20:30:00', '2020-10-22');
+--FreeTime(userID, startTime, endTime, date)
+--Bill's free time
+INSERT INTO FreeTime VALUES (1, '8,0', '8,1', 'Sunday');
+--Dill's free time
+INSERT INTO FreeTime VALUES (2, '9,0', '9,1', 'Sunday');
+INSERT INTO FreeTime VALUES (2, '9,1', '9,2', 'Saturday');
+--Jill's free time
+INSERT INTO FreeTime VALUES (3, '9,2', '9,3', 'Sunday');
+INSERT INTO FreeTime VALUES (3, '10,0', '11,0', 'Monday');
+INSERT INTO FreeTime VALUES (3, '9,0', '9,3', 'Tuesday');
+INSERT INTO FreeTime VALUES (3, '9,0', '9,3', 'Wednesday');
+INSERT INTO FreeTime VALUES (3, '9,0', '9,3', 'Thursday');
+INSERT INTO FreeTime VALUES (3, '9,0', '9,3', 'Friday');
+INSERT INTO FreeTime VALUES (3, '9,0', '9,3', 'Saturday');
+--Gill's free time
+INSERT INTO FreeTime VALUES (4, '12,0', '14,0', 'Sunday');
+--Owen's free time
+INSERT INTO FreeTime VALUES (5, '13,0', '14,0', 'Sunday');
+--Josh's free time
+INSERT INTO FreeTime VALUES (6, '9,2', '9,3', 'Sunday');
+INSERT INTO FreeTime VALUES (6, '10,0', '11,0', 'Monday');
+INSERT INTO FreeTime VALUES (6, '8,0', '10,0', 'Tuesday');
+INSERT INTO FreeTime VALUES (6, '9,0', '9,3', 'Wednesday');
+INSERT INTO FreeTime VALUES (6, '9,0', '9,3', 'Thursday');
+INSERT INTO FreeTime VALUES (6, '9,0', '9,3', 'Friday');
+INSERT INTO FreeTime VALUES (6, '9,0', '9,3', 'Saturday');
+--Donald's free time
+INSERT INTO FreeTime VALUES (7, '9,0', '9,3', 'Sunday');
+INSERT INTO FreeTime VALUES (7, '9,0', '9,3', 'Monday');
+INSERT INTO FreeTime VALUES (7, '9,0', '9,3', 'Tuesday');
+INSERT INTO FreeTime VALUES (7, '9,0', '9,3', 'Wednesday');
+INSERT INTO FreeTime VALUES (7, '9,0', '9,3', 'Thursday');
+INSERT INTO FreeTime VALUES (7, '9,0', '9,3', 'Friday');
+INSERT INTO FreeTime VALUES (7, '9,0', '9,3', 'Saturday');
+INSERT INTO FreeTime VALUES (7, '15,2', '15,3', 'Saturday');
+--Michelange's free time
+INSERT INTO FreeTime VALUES (8, '9,0', '9,3', 'Sunday');
+INSERT INTO FreeTime VALUES (8, '9,0', '9,3', 'Monday');
+INSERT INTO FreeTime VALUES (8, '9,0', '9,3', 'Tuesday');
+INSERT INTO FreeTime VALUES (8, '9,0', '9,3', 'Wednesday');
+INSERT INTO FreeTime VALUES (8, '9,0', '9,3', 'Thursday');
+INSERT INTO FreeTime VALUES (8, '9,0', '9,3', 'Friday');
+INSERT INTO FreeTime VALUES (8, '9,0', '9,3', 'Saturday');
+INSERT INTO FreeTime VALUES (8, '15,2', '15,3', 'Saturday');
 
 
 --UserFriendsList(userID, friendID)
