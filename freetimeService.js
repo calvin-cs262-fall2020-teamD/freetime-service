@@ -39,7 +39,7 @@ router.post("/uploadtimes", uploadtimes);
 router.post("/creategroup", creategroup);
 router.post("/addgroupmember", addgroupmember);
 router.put("/changegroupname", changegroupname);
-router.put("/getfreetimes", getfreetimes);
+router.get("/getfreetimes", getfreetimes);
 router.delete("/deletedaytimes", deletedaytimes);
 router.delete("/deleteweektimes", deleteweektimes);
 router.delete("/deletegroup", deletegroup);
