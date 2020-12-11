@@ -24,11 +24,12 @@ CREATE TABLE Interest (
     interestName varchar(20) NOT NULL
 );
 
-CREATE TABLE UserFriendsList (
-    userID integer REFERENCES FTUser(ID),
-    friendID integer NOT NULL,
-    FOREIGN KEY (friendID) REFERENCES FTUser(ID)
-    );
+-- To implement in the future
+-- CREATE TABLE UserFriendsList (
+--     userID integer REFERENCES FTUser(ID),
+--     friendID integer NOT NULL,
+--     FOREIGN KEY (friendID) REFERENCES FTUser(ID)
+--     );
 
 CREATE TABLE UserInterests (
     userID integer REFERENCES FTUser(ID),
@@ -55,19 +56,21 @@ CREATE TABLE GroupMembers (
     );
 
 --This looks identical, but it's meant to be a middleman for a user getting entered into GroupMembers
-CREATE TABLE GroupInvites (
-    userID integer REFERENCES FTUser(ID),
-    groupID integer REFERENCES Groups(ID)
-);
+-- To implement in the future
+-- CREATE TABLE GroupInvites (
+--     userID integer REFERENCES FTUser(ID),
+--     groupID integer REFERENCES Groups(ID)
+-- );
 
-CREATE TABLE GroupEvent (
-    ID SERIAL PRIMARY KEY,
-	groupID integer REFERENCES Groups(ID),
-    eventName varchar(20) NOT NULL,
-    startTime time,
-    endTime time,
-    date DATE
-	);
+-- To implement in the future
+-- CREATE TABLE GroupEvent (
+--     ID SERIAL PRIMARY KEY,
+-- 	groupID integer REFERENCES Groups(ID),
+--     eventName varchar(20) NOT NULL,
+--     startTime time,
+--     endTime time,
+--     date DATE
+-- 	);
 
 GRANT SELECT ON FTUser TO PUBLIC;
 GRANT SELECT ON Interest TO PUBLIC;
@@ -79,15 +82,11 @@ GRANT SELECT ON GroupMembers TO PUBLIC;
 GRANT SELECT ON GroupEvent TO PUBLIC;
 
 --FTUser(ID, username, password)
-INSERT INTO FTUser (username, userPassword) VALUES ('Bill', 'Baconstripsandbaconstrips');
-INSERT INTO FTUser (username, userPassword) VALUES ('Dill', 'Lionsandtigersandbears');
+INSERT INTO FTUser (username, userPassword) VALUES ('Bill', 'coin');
+INSERT INTO FTUser (username, userPassword) VALUES ('Dill', 'pickle');
 INSERT INTO FTUser (username, userPassword) VALUES ('Jill', 'abc123');
-INSERT INTO FTUser (username, userPassword) VALUES ('Gill', 'turducken5');
-
-INSERT INTO FTUser (username, userPassword) VALUES ('Owen', 'fancyPants');
-INSERT INTO FTUser (username, userPassword) VALUES ('Josh', 'bearDown5!!');
-INSERT INTO FTUser (username, userPassword) VALUES ('Donald', 'quacker5?');
-INSERT INTO FTUser (username, userPassword) VALUES ('Michelange', 'fanta5ia');
+INSERT INTO FTUser (username, userPassword) VALUES ('Gill', 'thunder');
+INSERT INTO FTUser (username, userPassword) VALUES ('David', 'password');
 
 --FreeTime(userID, startTime, endTime, date)
 --Bill's free time
@@ -97,43 +96,19 @@ INSERT INTO FreeTime VALUES (2, '9,0', '9,1', 'Sunday');
 INSERT INTO FreeTime VALUES (2, '9,1', '9,2', 'Saturday');
 --Jill's free time
 INSERT INTO FreeTime VALUES (3, '9,2', '9,3', 'Sunday');
-INSERT INTO FreeTime VALUES (3, '10,0', '11,0', 'Monday');
+INSERT INTO FreeTime VALUES (3, '9,0', '11,3', 'Monday');
 INSERT INTO FreeTime VALUES (3, '9,0', '9,3', 'Tuesday');
 INSERT INTO FreeTime VALUES (3, '9,0', '9,3', 'Wednesday');
 INSERT INTO FreeTime VALUES (3, '9,0', '9,3', 'Thursday');
 INSERT INTO FreeTime VALUES (3, '9,0', '9,3', 'Friday');
-INSERT INTO FreeTime VALUES (3, '9,0', '9,3', 'Saturday');
+INSERT INTO FreeTime VALUES (3, '12,0', '12,2', 'Saturday');
+INSERT INTO FreeTime VALUES (3, '14,0', '15,1', 'Saturday');
 --Gill's free time
 INSERT INTO FreeTime VALUES (4, '12,0', '14,0', 'Sunday');
---Owen's free time
-INSERT INTO FreeTime VALUES (5, '13,0', '14,0', 'Sunday');
---Josh's free time
-INSERT INTO FreeTime VALUES (6, '9,2', '9,3', 'Sunday');
-INSERT INTO FreeTime VALUES (6, '10,0', '11,0', 'Monday');
-INSERT INTO FreeTime VALUES (6, '8,0', '10,0', 'Tuesday');
-INSERT INTO FreeTime VALUES (6, '9,0', '9,3', 'Wednesday');
-INSERT INTO FreeTime VALUES (6, '9,0', '9,3', 'Thursday');
-INSERT INTO FreeTime VALUES (6, '9,0', '9,3', 'Friday');
-INSERT INTO FreeTime VALUES (6, '9,0', '9,3', 'Saturday');
---Donald's free time
-INSERT INTO FreeTime VALUES (7, '9,0', '9,3', 'Sunday');
-INSERT INTO FreeTime VALUES (7, '9,0', '9,3', 'Monday');
-INSERT INTO FreeTime VALUES (7, '9,0', '9,3', 'Tuesday');
-INSERT INTO FreeTime VALUES (7, '9,0', '9,3', 'Wednesday');
-INSERT INTO FreeTime VALUES (7, '9,0', '9,3', 'Thursday');
-INSERT INTO FreeTime VALUES (7, '9,0', '9,3', 'Friday');
-INSERT INTO FreeTime VALUES (7, '9,0', '9,3', 'Saturday');
-INSERT INTO FreeTime VALUES (7, '15,2', '15,3', 'Saturday');
---Michelange's free time
-INSERT INTO FreeTime VALUES (8, '9,0', '9,3', 'Sunday');
-INSERT INTO FreeTime VALUES (8, '9,0', '9,3', 'Monday');
-INSERT INTO FreeTime VALUES (8, '9,0', '9,3', 'Tuesday');
-INSERT INTO FreeTime VALUES (8, '9,0', '9,3', 'Wednesday');
-INSERT INTO FreeTime VALUES (8, '9,0', '9,3', 'Thursday');
-INSERT INTO FreeTime VALUES (8, '9,0', '9,3', 'Friday');
-INSERT INTO FreeTime VALUES (8, '9,0', '9,3', 'Saturday');
-INSERT INTO FreeTime VALUES (8, '15,2', '15,3', 'Saturday');
-
+--David's free time
+INSERT INTO FreeTime VALUES (3, '10,0', '11,3', 'Monday');
+INSERT INTO FreeTime VALUES (3, '12,0', '12,2', 'Saturday');
+INSERT INTO FreeTime VALUES (3, '14,0', '15,1', 'Saturday');
 
 --UserFriendsList(userID, friendID)
 --Everyone in group 1 is friends with each other
