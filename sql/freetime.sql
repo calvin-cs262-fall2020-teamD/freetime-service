@@ -74,12 +74,12 @@ CREATE TABLE GroupMembers (
 
 GRANT SELECT ON FTUser TO PUBLIC;
 GRANT SELECT ON Interest TO PUBLIC;
-GRANT SELECT ON UserFriendsList TO PUBLIC;
+--GRANT SELECT ON UserFriendsList TO PUBLIC;
 GRANT SELECT ON UserInterests TO PUBLIC;
 GRANT SELECT ON FreeTime TO PUBLIC;
 GRANT SELECT ON Groups TO PUBLIC;
 GRANT SELECT ON GroupMembers TO PUBLIC;
-GRANT SELECT ON GroupEvent TO PUBLIC;
+--GRANT SELECT ON GroupEvent TO PUBLIC;
 
 --FTUser(ID, username, password)
 INSERT INTO FTUser (username, userPassword) VALUES ('Bill', 'coin');
@@ -110,33 +110,34 @@ INSERT INTO FreeTime VALUES (3, '10,0', '11,3', 'Monday');
 INSERT INTO FreeTime VALUES (3, '12,0', '12,2', 'Saturday');
 INSERT INTO FreeTime VALUES (3, '14,0', '15,1', 'Saturday');
 
+-- To implement in the future
 --UserFriendsList(userID, friendID)
 --Everyone in group 1 is friends with each other
-INSERT INTO UserFriendsList VALUES (1, 2);
-INSERT INTO UserFriendsList VALUES (1, 3);
-INSERT INTO UserFriendsList VALUES (1, 4);
-INSERT INTO UserFriendsList VALUES (2, 1);
-INSERT INTO UserFriendsList VALUES (2, 3);
-INSERT INTO UserFriendsList VALUES (2, 4);
-INSERT INTO UserFriendsList VALUES (3, 2);
-INSERT INTO UserFriendsList VALUES (3, 1);
-INSERT INTO UserFriendsList VALUES (3, 4);
-INSERT INTO UserFriendsList VALUES (4, 2);
-INSERT INTO UserFriendsList VALUES (4, 3);
-INSERT INTO UserFriendsList VALUES (4, 1);
+-- INSERT INTO UserFriendsList VALUES (1, 2);
+-- INSERT INTO UserFriendsList VALUES (1, 3);
+-- INSERT INTO UserFriendsList VALUES (1, 4);
+-- INSERT INTO UserFriendsList VALUES (2, 1);
+-- INSERT INTO UserFriendsList VALUES (2, 3);
+-- INSERT INTO UserFriendsList VALUES (2, 4);
+-- INSERT INTO UserFriendsList VALUES (3, 2);
+-- INSERT INTO UserFriendsList VALUES (3, 1);
+-- INSERT INTO UserFriendsList VALUES (3, 4);
+-- INSERT INTO UserFriendsList VALUES (4, 2);
+-- INSERT INTO UserFriendsList VALUES (4, 3);
+-- INSERT INTO UserFriendsList VALUES (4, 1);
 --Everyone in group 2 is friends with each other
-INSERT INTO UserFriendsList VALUES (5, 6);
-INSERT INTO UserFriendsList VALUES (5, 7);
-INSERT INTO UserFriendsList VALUES (5, 8);
-INSERT INTO UserFriendsList VALUES (6, 5);
-INSERT INTO UserFriendsList VALUES (6, 7);
-INSERT INTO UserFriendsList VALUES (6, 8);
-INSERT INTO UserFriendsList VALUES (7, 6);
-INSERT INTO UserFriendsList VALUES (7, 8);
-INSERT INTO UserFriendsList VALUES (7, 5);
-INSERT INTO UserFriendsList VALUES (8, 7);
-INSERT INTO UserFriendsList VALUES (8, 6);
-INSERT INTO UserFriendsList VALUES (8, 5);
+-- INSERT INTO UserFriendsList VALUES (5, 6);
+-- INSERT INTO UserFriendsList VALUES (5, 7);
+-- INSERT INTO UserFriendsList VALUES (5, 8);
+-- INSERT INTO UserFriendsList VALUES (6, 5);
+-- INSERT INTO UserFriendsList VALUES (6, 7);
+-- INSERT INTO UserFriendsList VALUES (6, 8);
+-- INSERT INTO UserFriendsList VALUES (7, 6);
+-- INSERT INTO UserFriendsList VALUES (7, 8);
+-- INSERT INTO UserFriendsList VALUES (7, 5);
+-- INSERT INTO UserFriendsList VALUES (8, 7);
+-- INSERT INTO UserFriendsList VALUES (8, 6);
+-- INSERT INTO UserFriendsList VALUES (8, 5);
 
 --Interest(ID, interestName)
 INSERT INTO Interest VALUES (1, 'Basketball');
@@ -180,5 +181,6 @@ INSERT INTO GroupMembers VALUES (7, 2);
 INSERT INTO GroupMembers VALUES (8, 2);
 INSERT INTO GroupMembers VALUES (3, 2);
 
+-- To be implemented in the future
 --GroupEvent(ID, groupID, eventName, startTime, endTime, date)
-INSERT INTO GroupEvent (groupID, eventName, startTime, endTime, date) VALUES (1,    'Smash Tournament', '18:00:00', '20:00:00', '2020-10-22');
+--INSERT INTO GroupEvent (groupID, eventName, startTime, endTime, date) VALUES (1,    'Smash Tournament', '18:00:00', '20:00:00', '2020-10-22');
