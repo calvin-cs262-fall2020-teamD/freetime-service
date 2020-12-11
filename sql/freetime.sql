@@ -106,9 +106,9 @@ INSERT INTO FreeTime VALUES (3, '14,0', '15,1', 'Saturday');
 --Gill's free time
 INSERT INTO FreeTime VALUES (4, '12,0', '14,0', 'Sunday');
 --David's free time
-INSERT INTO FreeTime VALUES (3, '10,0', '11,3', 'Monday');
-INSERT INTO FreeTime VALUES (3, '12,0', '12,2', 'Saturday');
-INSERT INTO FreeTime VALUES (3, '14,0', '15,1', 'Saturday');
+INSERT INTO FreeTime VALUES (5, '10,0', '11,3', 'Monday');
+INSERT INTO FreeTime VALUES (5, '12,0', '12,2', 'Saturday');
+INSERT INTO FreeTime VALUES (5, '14,0', '15,1', 'Saturday');
 
 -- To implement in the future
 --UserFriendsList(userID, friendID)
