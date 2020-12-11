@@ -174,11 +174,6 @@ INSERT INTO GroupMembers VALUES (1, 1);
 INSERT INTO GroupMembers VALUES (2, 1);
 INSERT INTO GroupMembers VALUES (3, 1);
 INSERT INTO GroupMembers VALUES (4, 1);
-
-INSERT INTO GroupMembers VALUES (5, 2);
-INSERT INTO GroupMembers VALUES (6, 2);
-INSERT INTO GroupMembers VALUES (7, 2);
-INSERT INTO GroupMembers VALUES (8, 2);
 INSERT INTO GroupMembers VALUES (3, 2);
 
 -- To be implemented in the future
